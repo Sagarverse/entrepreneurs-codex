@@ -1,7 +1,7 @@
-// Smoke test for the 30-Day Entrepreneur Mindset Trainer.
+// Smoke test for The Entrepreneur's Codex.
 import 'package:flutter_test/flutter_test.dart';
-import 'package:entrepreneur_mindset/models/app_models.dart';
-import 'package:entrepreneur_mindset/services/update_service.dart';
+import 'package:entrepreneur_codex/models/app_models.dart';
+import 'package:entrepreneur_codex/services/update_service.dart';
 
 void main() {
   test('UserProgress defaults', () {

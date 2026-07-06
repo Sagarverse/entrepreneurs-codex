@@ -1,11 +1,11 @@
 {
-    "name": "entrepreneur_mindset",
-    "short_name": "entrepreneur_mindset",
+    "name": "The Entrepreneur's Codex",
+    "short_name": "Codex",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#0A0A0F",
+    "theme_color": "#C9A961",
+    "description": "A cinematic 30-day journey of the mind, the hand, and the pen.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

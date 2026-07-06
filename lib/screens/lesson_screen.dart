@@ -64,6 +64,7 @@ class _LessonScreenState extends State<LessonScreen> {
     if (_sealTriggered) return;
     _sealTriggered = true;
     final wasCompleted = state.progress.completedDays.contains(lesson.day);
+    final streakBefore = state.progress.streak;
     if (!wasCompleted) {
       CodexAudio.instance.bell(scale: 1.0);
     }
@@ -72,6 +73,38 @@ class _LessonScreenState extends State<LessonScreen> {
     if (wasCompleted) {
       Navigator.of(context).pop();
       return;
+    }
+    // Streak milestone toast — celebrate at 7 / 14 / 30 days.
+    final streakAfter = state.progress.streak;
+    final hitMilestone = streakAfter != streakBefore &&
+        (streakAfter == 7 || streakAfter == 14 || streakAfter == 30);
+    if (hitMilestone) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: CodexPalette.inkHigher,
+          duration: const Duration(seconds: 3),
+          content: Row(
+            children: [
+              const Icon(Icons.local_fire_department_rounded,
+                  color: CodexPalette.gold, size: 22),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(
+                  '$streakAfter day streak. The codex is taking shape.',
+                  style: GoogleFonts.cinzel(
+                    fontSize: 11,
+                    letterSpacing: 2,
+                    color: CodexPalette.goldBright,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+      await Future.delayed(const Duration(milliseconds: 800));
+      if (!context.mounted) return;
     }
     // If this seal completed the entire 30-chapter codex, send the
     // user straight to the certificate. Otherwise, the milestone screen

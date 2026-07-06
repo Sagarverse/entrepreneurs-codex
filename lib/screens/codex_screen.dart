@@ -142,6 +142,116 @@ class _SealSection extends StatelessWidget {
               ),
             ],
           ),
+          const SizedBox(height: 18),
+          _ChapterProgressBar(
+            completed: p.completedDays.length,
+            current: p.currentDay,
+            total: 30,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// 30-chapter progress strip — shows how many chapters are sealed
+/// with a thin gold rule across the page, dotted between each, plus
+/// a small "+1 next" hint.
+class _ChapterProgressBar extends StatelessWidget {
+  final int completed;
+  final int current;
+  final int total;
+  const _ChapterProgressBar({
+    required this.completed,
+    required this.current,
+    required this.total,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final pct = total == 0 ? 0.0 : completed / total;
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'CHAPTERS',
+                style: GoogleFonts.cinzel(
+                  fontSize: 9,
+                  letterSpacing: 3,
+                  color: CodexPalette.gold,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              Text(
+                '$completed OF $total SEALED',
+                style: GoogleFonts.cinzel(
+                  fontSize: 9,
+                  letterSpacing: 3,
+                  color: CodexPalette.gold,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          // Hairline gold rule that fills as chapters are sealed.
+          Stack(
+            children: [
+              Container(
+                height: 2,
+                decoration: BoxDecoration(
+                  color: CodexPalette.goldDeep.withValues(alpha: 0.3),
+                  borderRadius: BorderRadius.circular(1),
+                ),
+              ),
+              FractionallySizedBox(
+                widthFactor: pct.clamp(0.0, 1.0),
+                child: Container(
+                  height: 2,
+                  decoration: BoxDecoration(
+                    color: CodexPalette.gold,
+                    borderRadius: BorderRadius.circular(1),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 6),
+          // Tick marks under the rule, one per chapter, with a small
+          // indicator at the user's current position.
+          SizedBox(
+            height: 8,
+            child: LayoutBuilder(
+              builder: (context, c) {
+                return Stack(
+                  children: [
+                    for (var i = 0; i < total; i++)
+                      Positioned(
+                        left: (i / (total - 1)) *
+                            (c.maxWidth - 4),
+                        top: 0,
+                        child: Container(
+                          width: 4,
+                          height: i % 5 == 4 ? 8 : 4,
+                          decoration: BoxDecoration(
+                            color: i < completed
+                                ? CodexPalette.gold
+                                : CodexPalette.goldDeep
+                                    .withValues(alpha: 0.4),
+                            borderRadius: BorderRadius.circular(1),
+                          ),
+                        ),
+                      ),
+                  ],
+                );
+              },
+            ),
+          ),
         ],
       ),
     );

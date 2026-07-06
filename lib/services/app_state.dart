@@ -206,6 +206,33 @@ class AppState extends ChangeNotifier {
     progress.currentDay = 30;
   }
 
+  /// Manually set which day the user is on. Used by Settings → Set
+  /// Current Day for crash recovery or starting partway through on
+  /// a fresh install. The chosen day, every earlier day, and the
+  /// day immediately after the user's highest completed day are all
+  /// considered unlocked by [isDayUnlocked].
+  ///
+  /// We deliberately do NOT wipe completed days or XP — the user
+  /// may be resuming after a crash and we must not punish them for
+  /// work they've already done. The chosen [day] is clamped to
+  /// `1..30` and must not exceed `highestCompleted + 2` so the
+  /// gating model stays consistent.
+  Future<void> setCurrentDay(int day) async {
+    final clamped = day.clamp(1, 30);
+    final highest = progress.completedDays.isEmpty
+        ? 0
+        : progress.completedDays.reduce((a, b) => a > b ? a : b);
+    // Allow up to 2 ahead of what they've finished so they can
+    // preview the next chapter before doing it, but no further.
+    final max = (highest + 2).clamp(1, 30);
+    final target = clamped > max ? max : clamped;
+    if (progress.currentDay == target) return;
+    progress.currentDay = target;
+    progress.lastActiveDate = _todayInt();
+    await _storage.saveProgress(progress);
+    notifyListeners();
+  }
+
   void _updateStreak() {
     final today = _todayInt();
     if (progress.lastActiveDate == 0) {
