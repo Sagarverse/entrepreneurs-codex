@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../data/week_intros.dart';
 import '../services/app_state.dart';
 import '../services/codex_audio.dart';
 import '../services/storage_service.dart';
+import '../services/update_service.dart';
 import '../theme.dart';
-import 'about_developer_screen.dart';
 import 'codex_screen.dart';
 import 'weekly_intro_screen.dart';
+
+/// The developer behind The Entrepreneur's Codex. Contact info is
+/// published with the app; edit here if it ever changes.
+class _DeveloperProfile {
+  static const String name = 'Sagar M';
+  static const String phone = '+91 9019989269';
+  static const String phoneRaw = 'tel:+919019989269';
+  static const String email = 'sagarm.2k5@gmail.com';
+  static const String emailRaw = 'mailto:sagarm.2k5@gmail.com';
+}
 
 /// Settings — re-watch a week intro, or reset progress and start over.
 class SettingsScreen extends StatelessWidget {
@@ -66,18 +77,6 @@ class SettingsScreen extends StatelessWidget {
           ],
           const SizedBox(height: 28),
           Text(
-            'CREDITS',
-            style: GoogleFonts.cinzel(
-              fontSize: 11,
-              letterSpacing: 4,
-              color: CodexPalette.gold,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          const SizedBox(height: 12),
-          _AboutRow(),
-          const SizedBox(height: 28),
-          Text(
             'DANGER',
             style: GoogleFonts.cinzel(
               fontSize: 11,
@@ -88,24 +87,217 @@ class SettingsScreen extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           _ResetRow(),
+          const SizedBox(height: 40),
+          const _AboutTheDeveloperSection(),
         ],
       ),
     );
   }
 }
 
-class _AboutRow extends StatelessWidget {
+/// "About the Developer" — pinned to the bottom of Settings, with
+/// the developer's real profile photo, name, short bio, and
+/// tappable phone / email / GitHub rows. Lives inline (no separate
+/// screen) so everything the user might want to know about the
+/// maker is one scroll away.
+class _AboutTheDeveloperSection extends StatelessWidget {
+  const _AboutTheDeveloperSection();
+
+  Future<void> _open(BuildContext context, String url) async {
+    final uri = Uri.parse(url);
+    final ok = await canLaunchUrl(uri) &&
+        await launchUrl(uri, mode: LaunchMode.externalApplication);
+    if (!ok && context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Could not open $url'),
+          backgroundColor: CodexPalette.inkHigher,
+        ),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const Padding(
+          padding: EdgeInsets.symmetric(vertical: 16),
+          child: _GoldRule(),
+        ),
+        Text(
+          'ABOUT THE DEVELOPER',
+          style: GoogleFonts.cinzel(
+            fontSize: 11,
+            letterSpacing: 4,
+            color: CodexPalette.gold,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        const SizedBox(height: 18),
+        // Profile card with photo + name + bio, framed in gold.
+        Container(
+          padding: const EdgeInsets.fromLTRB(20, 24, 20, 24),
+          decoration: BoxDecoration(
+            color: CodexPalette.inkRaised,
+            borderRadius: BorderRadius.circular(2),
+            border: Border.all(color: CodexPalette.gold, width: 0.5),
+          ),
+          child: Column(
+            children: [
+              Container(
+                width: 96,
+                height: 96,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: CodexPalette.inkBlack,
+                  border:
+                      Border.all(color: CodexPalette.gold, width: 1),
+                  image: const DecorationImage(
+                    image: AssetImage('assets/developer.png'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              Text(
+                _DeveloperProfile.name,
+                style: GoogleFonts.cinzel(
+                  fontSize: 22,
+                  color: CodexPalette.goldBright,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: 2,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                'CREATOR · THE ENTREPRENEUR\'S CODEX',
+                style: GoogleFonts.cinzel(
+                  fontSize: 9,
+                  letterSpacing: 3,
+                  color: CodexPalette.gold,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              const SizedBox(height: 16),
+              Container(width: 60, height: 0.5, color: CodexPalette.goldDeep),
+              const SizedBox(height: 16),
+              Text(
+                'A thirty-day journey of the mind, the hand, and the pen — '
+                'forged in ink and gold by an entrepreneur who believes '
+                'mindset is the first capital.',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.cormorantGaramond(
+                  fontSize: 15,
+                  color: CodexPalette.textOnInk,
+                  fontStyle: FontStyle.italic,
+                  height: 1.55,
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 14),
+        _ContactTile(
+          icon: Icons.phone_iphone_rounded,
+          label: 'PHONE',
+          value: _DeveloperProfile.phone,
+          onTap: () => _open(context, _DeveloperProfile.phoneRaw),
+        ),
+        const SizedBox(height: 8),
+        _ContactTile(
+          icon: Icons.alternate_email_rounded,
+          label: 'EMAIL',
+          value: _DeveloperProfile.email,
+          onTap: () => _open(context, _DeveloperProfile.emailRaw),
+        ),
+        const SizedBox(height: 8),
+        _ContactTile(
+          icon: Icons.code_rounded,
+          label: 'GITHUB',
+          value:
+              'github.com/${UpdateService.repoOwner}/${UpdateService.repoName}',
+          onTap: () => _open(
+            context,
+            'https://github.com/${UpdateService.repoOwner}/${UpdateService.repoName}',
+          ),
+        ),
+        const SizedBox(height: 16),
+        Center(
+          child: Text(
+            'MADE WITH CARE',
+            style: GoogleFonts.cinzel(
+              fontSize: 9,
+              letterSpacing: 4,
+              color: CodexPalette.textOnInkDim,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ),
+        const SizedBox(height: 4),
+        Center(
+          child: Text(
+            'v${UpdateService.currentVersion} · The Entrepreneur\'s Codex',
+            style: GoogleFonts.cormorantGaramond(
+              fontSize: 13,
+              color: CodexPalette.textOnInkDim,
+              fontStyle: FontStyle.italic,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _GoldRule extends StatelessWidget {
+  const _GoldRule();
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: Container(height: 0.5, color: CodexPalette.goldDeep),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Text(
+            '✦',
+            style: GoogleFonts.cinzel(
+              fontSize: 10,
+              color: CodexPalette.gold,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
+        ),
+        Expanded(
+          child: Container(height: 0.5, color: CodexPalette.goldDeep),
+        ),
+      ],
+    );
+  }
+}
+
+class _ContactTile extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final String value;
+  final VoidCallback onTap;
+  const _ContactTile({
+    required this.icon,
+    required this.label,
+    required this.value,
+    required this.onTap,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Material(
       color: CodexPalette.inkRaised,
       borderRadius: BorderRadius.circular(2),
       child: InkWell(
-        onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(
-            builder: (_) => const AboutDeveloperScreen(),
-          ));
-        },
+        onTap: onTap,
         borderRadius: BorderRadius.circular(2),
         child: Container(
           decoration: BoxDecoration(
@@ -114,12 +306,12 @@ class _AboutRow extends StatelessWidget {
                 width: 0.5),
             borderRadius: BorderRadius.circular(2),
           ),
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(14),
           child: Row(
             children: [
               Container(
-                width: 44,
-                height: 44,
+                width: 40,
+                height: 40,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: CodexPalette.inkHigher,
@@ -127,37 +319,35 @@ class _AboutRow extends StatelessWidget {
                       Border.all(color: CodexPalette.goldDeep, width: 0.5),
                   borderRadius: BorderRadius.circular(2),
                 ),
-                child: const Icon(Icons.person_outline_rounded,
-                    color: CodexPalette.gold, size: 22),
+                child: Icon(icon, color: CodexPalette.gold, size: 18),
               ),
-              const SizedBox(width: 14),
+              const SizedBox(width: 12),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'ABOUT THE DEVELOPER',
+                      label,
                       style: GoogleFonts.cinzel(
-                        fontSize: 11,
+                        fontSize: 9,
                         letterSpacing: 3,
                         color: CodexPalette.gold,
-                        fontWeight: FontWeight.w800,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
-                    const SizedBox(height: 2),
+                    const SizedBox(height: 1),
                     Text(
-                      '${AboutDeveloperScreen.developerName} · the hand behind the codex',
+                      value,
                       style: GoogleFonts.cormorantGaramond(
                         fontSize: 14,
-                        color: CodexPalette.textOnInkDim,
-                        fontStyle: FontStyle.italic,
+                        color: CodexPalette.textOnInk,
                       ),
                     ),
                   ],
                 ),
               ),
-              const Icon(Icons.chevron_right_rounded,
-                  color: CodexPalette.gold),
+              const Icon(Icons.open_in_new_rounded,
+                  color: CodexPalette.gold, size: 16),
             ],
           ),
         ),
