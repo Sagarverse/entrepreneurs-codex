@@ -163,6 +163,16 @@ class StorageService {
     await _prefs.setString(_keyUserName, name);
   }
 
+  // ---- Update prompt memory ----
+
+  static const _keyDismissedUpdateTag = 'dismissedUpdateTag';
+
+  String? get dismissedUpdateTag => _prefs.getString(_keyDismissedUpdateTag);
+
+  Future<void> setDismissedUpdateTag(String tag) async {
+    await _prefs.setString(_keyDismissedUpdateTag, tag);
+  }
+
   Future<void> clearAll() async {
     await _prefs.clear();
   }

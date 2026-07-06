@@ -23,7 +23,7 @@ class UpdateService {
   /// Play Store listing — only used on Android. The release-page
   /// fallback works for every platform.
   static const String androidPlayStoreUrl =
-      'https://play.google.com/store/apps/details?id=com.sagarverse.entrepreneurs_codex';
+      'https://play.google.com/store/apps/details?id=com.sagarverse.entrepreneur_codex';
 
   /// Public release page for a specific tag — used when we know the
   /// newer version. This is also the cross-platform fallback the

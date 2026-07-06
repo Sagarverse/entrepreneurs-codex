@@ -36,7 +36,7 @@ class EntrepreneurApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => AppState(storage)),
       ],
       child: MaterialApp(
-        title: 'The Entrepreneur\'s Codex',
+        title: 'Valion',
         debugShowCheckedModeBanner: false,
         theme: CodexTheme.build(),
         darkTheme: CodexTheme.build(),
@@ -133,12 +133,20 @@ class _SplashGateState extends State<_SplashGate> {
   /// version exists, show a non-blocking sheet that opens the
   /// release page when the user taps "Update". Failures are silent
   /// — the user should never see an error if the API is down.
+  ///
+  /// The prompt remembers when the user taps "Not Now" for a given
+  /// tag. It only re-shows if a *newer* tag than the dismissed one
+  /// appears (e.g. dismissed v1.2.0, then v1.3.0 comes out).
   void _maybePromptForUpdate() {
     Future<void>.delayed(const Duration(milliseconds: 1200), () async {
       if (!mounted) return;
       final check = await UpdateService.checkForUpdate();
       if (!mounted || !check.hasUpdate) return;
       if (check.newTag == null || check.releaseUrl == null) return;
+      // Don't nag if the user already dismissed this exact tag.
+      final storage = context.read<StorageService>();
+      final dismissed = storage.dismissedUpdateTag;
+      if (dismissed != null && dismissed == check.newTag) return;
       // Give the routed screen a frame to lay out, then show the sheet.
       await Future<void>.delayed(const Duration(milliseconds: 400));
       if (!mounted) return;
@@ -147,6 +155,12 @@ class _SplashGateState extends State<_SplashGate> {
         newTag: check.newTag!,
         releaseUrl: check.releaseUrl!,
       );
+      // If we get here, the sheet was dismissed (either "Not Now" or
+      // "Update" followed by a pop). Remember this tag so we don't
+      // show it again next launch.
+      if (mounted) {
+        await storage.setDismissedUpdateTag(check.newTag!);
+      }
     });
   }
 
@@ -165,7 +179,7 @@ class _SplashGateState extends State<_SplashGate> {
                   const AnimatedSeal(size: 120, progress: 0),
                   const SizedBox(height: 32),
                   Text(
-                    'THE ENTREPRENEUR\'S CODEX',
+                    'VALION',
                     style: GoogleFonts.cinzel(
                       fontSize: 14,
                       letterSpacing: 6,
@@ -185,7 +199,7 @@ class _SplashGateState extends State<_SplashGate> {
                 const AnimatedSeal(size: 120, progress: 0),
                 const SizedBox(height: 32),
                 Text(
-                  'THE ENTREPRENEUR\'S CODEX',
+                  'VALION',
                   style: GoogleFonts.cinzel(
                     fontSize: 14,
                     letterSpacing: 6,

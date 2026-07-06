@@ -25,7 +25,7 @@ class ScrollReveal extends StatefulWidget {
   const ScrollReveal({
     super.key,
     required this.child,
-    this.duration = const Duration(milliseconds: 900),
+    this.duration = const Duration(milliseconds: 500),
     this.offsetY = 22,
     this.startScale = 0.97,
   });
@@ -138,7 +138,7 @@ class _ScrollRevealState extends State<ScrollReveal>
 
     // Reveal when the widget is within the viewport (with a 200px lead
     // margin so cards appear just before they fully enter the viewport).
-    const margin = 200.0;
+    const margin = 400.0;
     final viewportTop = scrollOffset - margin;
     final viewportBottom = scrollOffset + viewportHeight + margin;
 

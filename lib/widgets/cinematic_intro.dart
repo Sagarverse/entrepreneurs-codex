@@ -33,9 +33,9 @@ class CinematicIntro extends StatefulWidget {
     required this.lines,
     this.bookendTop,
     this.bookendBottom,
-    this.lineStagger = const Duration(milliseconds: 700),
-    this.lineDuration = const Duration(milliseconds: 1400),
-    this.linePause = const Duration(milliseconds: 900),
+    this.lineStagger = const Duration(milliseconds: 400),
+    this.lineDuration = const Duration(milliseconds: 900),
+    this.linePause = const Duration(milliseconds: 500),
     this.onComplete,
     this.autoAdvance = true,
     this.chapter,
@@ -47,16 +47,26 @@ class CinematicIntro extends StatefulWidget {
 
 class _CinematicIntroState extends State<CinematicIntro>
     with TickerProviderStateMixin {
-  /// Per-line progress in [0, 1]. -1 means "not yet started".
-  late final List<double> _progress;
+  /// Per-line AnimationControllers that smoothly drive 0 → 1.
+  late final List<AnimationController> _lineControllers;
+  /// Whether each line has started its animation yet (-1 = not started).
+  late final List<bool> _lineStarted;
   bool _finished = false;
+  bool _navigated = false;
   late final AnimationController _vignetteCtrl;
   late final AnimationController _sealCtrl;
 
   @override
   void initState() {
     super.initState();
-    _progress = List<double>.filled(widget.lines.length, -1.0);
+    _lineControllers = List.generate(
+      widget.lines.length,
+      (i) => AnimationController(
+        vsync: this,
+        duration: widget.lineDuration,
+      ),
+    );
+    _lineStarted = List<bool>.filled(widget.lines.length, false);
     _vignetteCtrl = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 6),
@@ -70,6 +80,9 @@ class _CinematicIntroState extends State<CinematicIntro>
 
   @override
   void dispose() {
+    for (final c in _lineControllers) {
+      c.dispose();
+    }
     _vignetteCtrl.dispose();
     _sealCtrl.dispose();
     super.dispose();
@@ -80,19 +93,21 @@ class _CinematicIntroState extends State<CinematicIntro>
     await Future.delayed(const Duration(milliseconds: 600));
     for (var li = 0; li < widget.lines.length; li++) {
       if (!mounted) return;
-      // Start this line. The actual interpolation happens in the
-      // [_LineReveal] widget's AnimationController over [lineDuration].
-      setState(() => _progress[li] = 0.0);
-      await Future.delayed(widget.lineDuration);
+      // Mark the line as started and kick off the smooth animation.
+      setState(() => _lineStarted[li] = true);
+      _lineControllers[li].forward();
+      // Wait for the animation to complete.
+      await _lineControllers[li].forward().orCancel.catchError((_) {});
       if (!mounted) return;
-      setState(() => _progress[li] = 1.0);
+      // Hold after the line finishes before starting the next.
       await Future.delayed(widget.linePause);
     }
     if (!mounted) return;
     setState(() => _finished = true);
     if (widget.autoAdvance) {
       await Future.delayed(const Duration(milliseconds: 2400));
-      if (!mounted) return;
+      if (!mounted || _navigated) return;
+      _navigated = true;
       widget.onComplete?.call();
     }
   }
@@ -101,7 +116,9 @@ class _CinematicIntroState extends State<CinematicIntro>
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (_finished) widget.onComplete?.call();
+        if (_navigated) return;
+        _navigated = true;
+        widget.onComplete?.call();
       },
       child: Stack(
         children: [
@@ -150,6 +167,7 @@ class _CinematicIntroState extends State<CinematicIntro>
                               fontSize: 180,
                               color: CodexPalette.gold,
                               fontWeight: FontWeight.w800,
+                              decoration: TextDecoration.none,
                             ),
                           ),
                         ),
@@ -195,7 +213,7 @@ class _CinematicIntroState extends State<CinematicIntro>
                 children: [
                   if (widget.bookendTop != null)
                     _FadingIn(
-                      visible: _progress.isNotEmpty && _progress[0] >= 0,
+                      visible: _lineStarted.isNotEmpty && _lineStarted[0],
                       duration: const Duration(milliseconds: 1400),
                       child: _TopOrnament(
                         chapter: widget.chapter,
@@ -203,29 +221,35 @@ class _CinematicIntroState extends State<CinematicIntro>
                       ),
                     ),
                   const Spacer(),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: List.generate(widget.lines.length, (li) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 12),
-                        child: _LineReveal(
-                          text: widget.lines[li],
-                          style: GoogleFonts.cormorantGaramond(
-                            fontSize: 30,
-                            height: 1.35,
-                            color: CodexPalette.textOnInk,
-                            fontWeight: FontWeight.w500,
-                            letterSpacing: 0.3,
-                          ),
-                          // Drive the animation from the outside: -1 = not yet
-                          // (line invisible, layout reserved), 0 = just started,
-                          // 1 = fully revealed.
-                          progress: _progress[li] < 0 ? -1.0 : _progress[li],
-                          duration: widget.lineDuration,
-                        ),
-                      );
-                    }),
+                  // Use Flexible to prevent overflow when text is long.
+                  Flexible(
+                    child: SingleChildScrollView(
+                      physics: const BouncingScrollPhysics(),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: List.generate(widget.lines.length, (li) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            child: _LineReveal(
+                              text: widget.lines[li],
+                              style: GoogleFonts.cormorantGaramond(
+                                fontSize: 22,
+                                height: 1.40,
+                                color: CodexPalette.textOnInk,
+                                fontWeight: FontWeight.w500,
+                                letterSpacing: 0.3,
+                                decoration: TextDecoration.none,
+                              ),
+                              // Drive the animation from the actual controller
+                              // so the interpolation is smooth every frame.
+                              controller: _lineControllers[li],
+                              started: _lineStarted[li],
+                            ),
+                          );
+                        }),
+                      ),
+                    ),
                   ),
                   const Spacer(),
                   if (widget.bookendBottom != null)
@@ -248,48 +272,67 @@ class _CinematicIntroState extends State<CinematicIntro>
   }
 }
 
-/// A single line that fades + slides up as a single unit. The [progress]
-/// comes in from the outside (0 → 1) so the parent can coordinate the
-/// timing of multiple lines and the audio cues.
+/// A single line that fades + slides up as a single unit. Now driven by
+/// an actual [AnimationController] so every frame is smoothly interpolated —
+/// no jump from 0 to 1, just a continuous easeOutCubic curve.
 class _LineReveal extends StatelessWidget {
   final String text;
   final TextStyle style;
-  final double progress; // -1 = not yet, 0..1 = interpolation factor
-  final Duration duration;
+  final AnimationController controller;
+  final bool started;
 
   const _LineReveal({
     required this.text,
     required this.style,
-    required this.progress,
-    required this.duration,
+    required this.controller,
+    required this.started,
   });
 
   @override
   Widget build(BuildContext context) {
-    if (progress < 0) {
+    if (!started) {
       // Not started yet — reserve space with fully transparent text.
-      return Opacity(opacity: 0, child: Text(text, style: style));
-    }
-    // Long, soft easeOutCubic. Same curve regardless of the duration so
-    // multiple lines feel like a coordinated edit, not random speeds.
-    const curve = Curves.easeOutCubic;
-    final t = curve.transform(progress.clamp(0.0, 1.0));
-
-    // 18px upward slide + opacity 0→1 + tiny scale 0.96→1.0 for the
-    // "settling in" feel of a video cross-dissolve.
-    final slide = (1.0 - t) * 18.0;
-    final scale = 0.96 + 0.04 * t;
-    return IgnorePointer(
-      ignoring: progress < 0.05,
-      child: Opacity(
-        opacity: t,
-        child: Transform.translate(
-          offset: Offset(0, slide),
-          child: Transform.scale(
-            scale: scale,
-            child: Text(text, style: style),
-          ),
+      return Opacity(
+        opacity: 0,
+        child: Text(
+          text,
+          style: style,
+          softWrap: true,
+          overflow: TextOverflow.visible,
         ),
+      );
+    }
+    return AnimatedBuilder(
+      animation: controller,
+      builder: (context, child) {
+        // Long, soft easeOutCubic. Same curve regardless of the duration so
+        // multiple lines feel like a coordinated edit, not random speeds.
+        const curve = Curves.easeOutCubic;
+        final t = curve.transform(controller.value.clamp(0.0, 1.0));
+
+        // 18px upward slide + opacity 0→1 + tiny scale 0.96→1.0 for the
+        // "settling in" feel of a video cross-dissolve.
+        final slide = (1.0 - t) * 18.0;
+        final scale = 0.96 + 0.04 * t;
+        return IgnorePointer(
+          ignoring: controller.value < 0.05,
+          child: Opacity(
+            opacity: t,
+            child: Transform.translate(
+              offset: Offset(0, slide),
+              child: Transform.scale(
+                scale: scale,
+                child: child,
+              ),
+            ),
+          ),
+        );
+      },
+      child: Text(
+        text,
+        style: style,
+        softWrap: true,
+        overflow: TextOverflow.visible,
       ),
     );
   }
@@ -343,6 +386,7 @@ class _TopOrnament extends StatelessWidget {
             color: CodexPalette.gold,
             letterSpacing: 5,
             fontWeight: FontWeight.w800,
+            decoration: TextDecoration.none,
           ),
         ),
         if (chapter != null) ...[
@@ -354,6 +398,7 @@ class _TopOrnament extends StatelessWidget {
               color: CodexPalette.textOnInkDim,
               letterSpacing: 3,
               fontWeight: FontWeight.w600,
+              decoration: TextDecoration.none,
             ),
           ),
         ],
@@ -380,6 +425,7 @@ class _BottomOrnament extends StatelessWidget {
             color: CodexPalette.gold,
             letterSpacing: 5,
             fontWeight: FontWeight.w800,
+            decoration: TextDecoration.none,
           ),
         ),
       ],
@@ -426,6 +472,7 @@ class _PulseHintState extends State<_PulseHint>
               color: CodexPalette.gold,
               letterSpacing: 4,
               fontWeight: FontWeight.w700,
+              decoration: TextDecoration.none,
             ),
           ),
         );

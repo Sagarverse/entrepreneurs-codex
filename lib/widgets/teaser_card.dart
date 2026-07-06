@@ -37,13 +37,15 @@ class TeaserCard extends StatelessWidget {
                 color: alreadyUnlocked ? CodexPalette.gold : CodexPalette.textOnInkDim,
               ),
               const SizedBox(width: 6),
-              Text(
-                nextLesson == null
-                    ? 'YOUR CHAPTER'
-                    : 'TOMORROW · ${nextLesson!.chapterTitle.toUpperCase()}',
-                style: theme.textTheme.labelSmall?.copyWith(
-                  color: alreadyUnlocked ? CodexPalette.gold : CodexPalette.textOnInkDim,
-                  letterSpacing: 3,
+              Expanded(
+                child: Text(
+                  nextLesson == null
+                      ? 'YOUR CHAPTER'
+                      : 'TOMORROW · ${nextLesson!.chapterTitle.toUpperCase()}',
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    color: alreadyUnlocked ? CodexPalette.gold : CodexPalette.textOnInkDim,
+                    letterSpacing: 3,
+                  ),
                 ),
               ),
             ],

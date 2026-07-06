@@ -16,6 +16,7 @@ import 'certificate_screen.dart';
 import 'milestone_screen.dart';
 import 'quiz_screen.dart';
 import 'video_screen.dart';
+import 'lesson_intro_screen.dart';
 
 /// The lesson — a single scrollable page.
 ///
@@ -851,12 +852,38 @@ class _SealBar extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-          TeaserCard(
-            nextLesson: next,
-            hook: next.teaserHook ?? 'Another chapter of the codex awaits.',
-            quote: next.teaserQuote ??
-                '"The next page turns on its own."',
-            alreadyUnlocked: false,
+          GestureDetector(
+            onTap: isCompleted ? () {
+              Navigator.of(context).pushReplacement(
+                CinematicPageRoute(
+                  builder: (_) => LessonIntroScreen(
+                    lesson: next,
+                    onComplete: () {
+                      Navigator.of(context).pushReplacement(
+                        CinematicPageRoute(
+                          builder: (_) => LessonScreen(day: next.day),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              );
+            } : () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                    'Complete and seal the current chapter to unlock this.',
+                    style: GoogleFonts.inter(color: CodexPalette.textOnInk),
+                  ),
+                ),
+              );
+            },
+            child: TeaserCard(
+              nextLesson: next,
+              hook: next.teaserHook ?? 'Another chapter of the codex awaits.',
+              quote: next.teaserQuote ?? '"The next page turns on its own."',
+              alreadyUnlocked: isCompleted,
+            ),
           ),
         ],
       ],

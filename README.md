@@ -1,86 +1,77 @@
-# The Entrepreneur's Codex
+# Valion - The Entrepreneur's Codex
 
-A cinematic, curiosity-driven 30-day journey of the entrepreneurial
-mind — built in Flutter, sealed in ink and gold.
+<p align="center">
+  <img src="assets/icon.png" width="120" alt="Valion Logo" />
+</p>
 
-> _"A thirty-day journey of the mind, the hand, and the pen."_
+<p align="center">
+  <em>A cinematic 30-day journey of the mind, the hand, and the pen.</em>
+</p>
 
 ---
 
-## What it is
+## Overview
 
-- **30 chapters** across 4 weeks — abundance, craft, action, and
-  monetization
-- A **cinematic dark / gold / ink** aesthetic — Cinzel, Cormorant
-  Garamond, Inter
-- A **single scrollable lesson** per chapter: manifesto → sections
-  → skill of the day → trial → revelation (videos) → reflection
-  → examination (quiz) → seal
-- A **portfolio-style scroll-reveal** so cards appear as you reach
-  them
-- A **5-question end-of-chapter quiz** with active-recall XP
-- A **curated YouTube library** per chapter
-- A **PDF Certificate of Completion** when all 30 chapters are
-  sealed (landscape A4, ink + gold)
-- **Hall of Seals** (badges), **Progress Atlas** (constellation),
-  and a private **Journal**
+**Valion** is a premium, beautifully crafted mobile application designed for aspiring and veteran entrepreneurs alike. It serves as a 30-day "Codex"—a structured, daily curriculum that merges mindset shifts, actionable skills, and reflective journaling into a single, cohesive cinematic experience.
 
-## Privacy by default
+Rather than just another habit tracker or reading app, Valion is an interactive book of shadows for business. It uses a bespoke dark theme, gold accents, and fluid micro-animations to create an elite, immersive environment for daily growth.
 
-All progress — XP, journal, challenges, quiz answers — is stored
-on the device. No accounts. No servers. No analytics. The only
-network call the app makes is a single check of GitHub's public
-Releases API on launch, so you always have the latest edition.
+## Features
 
-See [`store/privacy-policy.md`](store/privacy-policy.md).
+- 📖 **The 30-Day Codex**: A structured daily curriculum that unlocks sequentially. Each day includes a Manifesto, Skill of the Day, Trial (Actionable Challenges), Video Revelation, and a Reflection prompt.
+- 🎨 **Cinematic UI/UX**: Built with an uncompromising focus on aesthetics. Features deep blacks (`Codex Ink Black`), rich golds, elegant typography (Cinzel & Cormorant Garamond), and smooth scroll-reveal animations.
+- 🖋️ **The Journal**: A built-in reflection space where you document your daily thoughts and progress. 
+- 🏆 **Milestones & Certificates**: Beautiful, shareable milestone cards at the end of each day, culminating in a printable, high-resolution PDF certificate upon completion of the 30-day journey.
+- ⚡ **Seamless Navigation**: Flow effortlessly from one chapter to the next without ever breaking the immersion, thanks to custom page transitions and optimized native splash screens.
 
-## Stack
+## Screenshots
 
-- **Flutter 3.x** (Dart 3.10)
-- **Provider** for state
-- **SharedPreferences** for persistence
-- **audioplayers** for the bell
-- **pdf** + **printing** for the certificate
-- **google_fonts** for the typefaces
-- **share_plus** + **url_launcher** for sharing & outbound links
+<p align="center">
+  <img src="screenshots/screenshot_1.png" width="250" alt="App Screenshot" />
+  <!-- Add more screenshots here in the future -->
+</p>
 
-## Run it
+## Tech Stack
 
-```bash
-flutter pub get
-flutter run -d chrome          # web
-flutter run -d <device-id>     # mobile
-```
+- **Framework**: Flutter (Dart)
+- **State Management**: Provider
+- **Local Storage**: Shared Preferences
+- **Design System**: Custom `CodexPalette` and `CodexTypography` (No external UI libraries used for core styling)
+- **PDF Generation**: `pdf` and `printing` packages for the final certificate
+- **Asset Generation**: Python (`generate_icon.py`) for programmatic SVG-to-PNG logo rendering to ensure exact theme matching.
 
-## Ship a new version
+## Getting Started
 
-See [`store/release-template.md`](store/release-template.md). The
-short version:
+### Prerequisites
+- Flutter SDK (`^3.10.8`)
+- Android Studio / Xcode for emulators
 
-1. Bump `version:` in `pubspec.yaml` and `currentVersion` in
-   `lib/services/update_service.dart`
-2. Add an entry to `store/changelog.md`
-3. `git tag vX.Y.Z && git push --tags`
-4. `gh release create vX.Y.Z --notes-file store/changelog.md`
+### Installation
 
-The app will auto-prompt users on launch when a newer release
-exists.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/valion.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd valion
+   ```
+3. Install dependencies:
+   ```bash
+   flutter pub get
+   ```
+4. Run the app:
+   ```bash
+   flutter run
+   ```
 
-## Project layout
+## Architecture Notes
 
-```
-lib/
-  data/            curriculum (30 days of content) + week intros
-  models/          plain Dart models
-  services/        app state, storage, audio, certificate, update
-  screens/         all UI surfaces
-  widgets/         small gold/ink primitives (frames, seal, etc.)
-store/             Play Store / App Store copy, changelog, release process
-```
+- `lib/data/curriculum.dart`: Contains the entire 30-day content matrix.
+- `lib/theme.dart`: The source of truth for the app's visual identity.
+- `lib/services/app_state.dart`: Manages progress, unlocking logic, and journal entries.
+- `lib/widgets/scroll_reveal.dart`: A custom widget that handles the cinematic fade-and-slide entrance of elements as they scroll into view.
 
-## Made by
+## License
 
-**Sagar M** — sagarm.2k5@gmail.com
-
-See the **About the Developer** screen inside the app
-(Settings → About the Developer) for the latest contact details.
+All rights reserved. 

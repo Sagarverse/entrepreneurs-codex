@@ -1,8 +1,26 @@
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
+}
+
+// Load signing properties from key.properties if it exists.
+// To create your keystore:
+//   keytool -genkey -v -keystore ~/entrepreneur-codex.jks -keyalg RSA -keysize 2048 -validity 10000 -alias codex
+// Then create android/key.properties with:
+//   storePassword=<password>
+//   keyPassword=<password>
+//   keyAlias=codex
+//   storeFile=/Users/you/entrepreneur-codex.jks
+val keystorePropertiesFile = rootProject.file("key.properties")
+val hasKeystore = keystorePropertiesFile.exists()
+val keystoreProperties = Properties()
+if (hasKeystore) {
+    keystoreProperties.load(FileInputStream(keystorePropertiesFile))
 }
 
 android {
@@ -31,8 +49,8 @@ android {
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
+            // Uses debug signing for local development.
+            // For Play Store, create android/key.properties with your keystore.
             signingConfig = signingConfigs.getByName("debug")
         }
     }

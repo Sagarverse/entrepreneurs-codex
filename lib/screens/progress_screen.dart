@@ -244,100 +244,144 @@ class _PathHeader extends StatelessWidget {
   }
 }
 
-class _WeekSpine extends StatelessWidget {
+class _WeekSpine extends StatefulWidget {
   final int week;
   const _WeekSpine({required this.week});
 
   @override
+  State<_WeekSpine> createState() => _WeekSpineState();
+}
+
+class _WeekSpineState extends State<_WeekSpine>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _ctrl;
+
+  @override
+  void initState() {
+    super.initState();
+    _ctrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 700),
+    );
+    // Small per-week stagger so the 4 weeks cascade top-to-bottom,
+    // but all 7 cards within a single week appear at the exact same time.
+    final delay = Duration(milliseconds: 150 * (widget.week - 1));
+    Future.delayed(delay, () {
+      if (mounted) _ctrl.forward();
+    });
+  }
+
+  @override
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final state = context.watch<AppState>();
-    final startDay = (week - 1) * 7 + 1;
+    final startDay = (widget.week - 1) * 7 + 1;
     final endDay = startDay + 6;
     final weekTheme = state.lessonForDay(startDay)?.weekTheme ??
-        'WEEK $week';
+        'WEEK ${widget.week}';
 
-    return CodexFrame(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 18),
-      borderColor: CodexPalette.goldDeep,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 8, vertical: 3),
-                decoration: BoxDecoration(
-                  color: CodexPalette.gold.withValues(alpha: 0.15),
-                  border: Border.all(
-                      color: CodexPalette.gold, width: 0.5),
-                  borderRadius: BorderRadius.circular(2),
-                ),
-                child: Text(
-                  'WEEK $week',
-                  style: GoogleFonts.cinzel(
-                    fontSize: 9,
-                    letterSpacing: 3,
-                    color: CodexPalette.goldBright,
-                    fontWeight: FontWeight.w800,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  weekTheme.toUpperCase(),
-                  overflow: TextOverflow.ellipsis,
-                  style: GoogleFonts.cinzel(
-                    fontSize: 11,
-                    letterSpacing: 3,
-                    color: CodexPalette.gold,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
-              Text(
-                '$startDay–$endDay',
-                style: GoogleFonts.cinzel(
-                  fontSize: 10,
-                  letterSpacing: 2,
-                  color: CodexPalette.textOnInkDim,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ],
+    return AnimatedBuilder(
+      animation: _ctrl,
+      builder: (context, child) {
+        final t = Curves.easeOutCubic.transform(_ctrl.value);
+        return Opacity(
+          opacity: t,
+          child: Transform.translate(
+            offset: Offset(0, (1 - t) * 16),
+            child: child,
           ),
-          const SizedBox(height: 14),
-          // Spine: 7 chapter nodes connected by a hairline gold path
-          Row(
-            children: [
-              for (var i = 0; i < 7; i++) ...[
+        );
+      },
+      child: CodexFrame(
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 18),
+        borderColor: CodexPalette.goldDeep,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 8, vertical: 3),
+                  decoration: BoxDecoration(
+                    color: CodexPalette.gold.withValues(alpha: 0.15),
+                    border: Border.all(
+                        color: CodexPalette.gold, width: 0.5),
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                  child: Text(
+                    'WEEK ${widget.week}',
+                    style: GoogleFonts.cinzel(
+                      fontSize: 9,
+                      letterSpacing: 3,
+                      color: CodexPalette.goldBright,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8),
                 Expanded(
-                  child: Center(
-                    child: ChapterCard(
-                      day: startDay + i,
-                      completed: state.progress.completedDays
-                          .contains(startDay + i),
-                      isCurrent:
-                          state.progress.currentDay == startDay + i,
-                      isUnlocked:
-                          state.isDayUnlocked(startDay + i),
-                      onTap: () => _openChapter(context, state, startDay + i),
+                  child: Text(
+                    weekTheme.toUpperCase(),
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.cinzel(
+                      fontSize: 11,
+                      letterSpacing: 3,
+                      color: CodexPalette.gold,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                 ),
-                if (i < 6)
+                Text(
+                  '$startDay–$endDay',
+                  style: GoogleFonts.cinzel(
+                    fontSize: 10,
+                    letterSpacing: 2,
+                    color: CodexPalette.textOnInkDim,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 14),
+            // Spine: 7 chapter nodes connected by a hairline gold path.
+            // All 7 cards are inside this single AnimatedBuilder so they
+            // appear in perfect sync — no per-card stagger.
+            Row(
+              children: [
+                for (var i = 0; i < 7; i++) ...[
                   Expanded(
-                    child: Container(
-                      height: 0.5,
-                      color: CodexPalette.goldDeep
-                          .withValues(alpha: 0.4),
+                    child: Center(
+                      child: ChapterCard(
+                        day: startDay + i,
+                        completed: state.progress.completedDays
+                            .contains(startDay + i),
+                        isCurrent:
+                            state.progress.currentDay == startDay + i,
+                        isUnlocked:
+                            state.isDayUnlocked(startDay + i),
+                        onTap: () => _openChapter(context, state, startDay + i),
+                      ),
                     ),
                   ),
+                  if (i < 6)
+                    Expanded(
+                      child: Container(
+                        height: 0.5,
+                        color: CodexPalette.goldDeep
+                            .withValues(alpha: 0.4),
+                      ),
+                    ),
+                ],
               ],
-            ],
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }

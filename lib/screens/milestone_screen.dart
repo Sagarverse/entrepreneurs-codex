@@ -1,3 +1,4 @@
+import 'dart:io' as io;
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
@@ -43,13 +44,16 @@ class _MilestoneScreenState extends State<MilestoneScreen> {
       final byteData = await image.toByteData(format: ui.ImageByteFormat.png);
       if (byteData == null) throw StateError('Could not encode image');
       final pngBytes = byteData.buffer.asUint8List();
-      final file = XFile.fromData(
-        Uint8List.fromList(pngBytes),
-        mimeType: 'image/png',
-        name: 'codex-chapter-${widget.lesson.day}.png',
-      );
+      
+      // Write to a temporary file before sharing. XFile.fromData often fails
+      // on Android because the share intent requires a physical file path.
+      final tempDir = io.Directory.systemTemp;
+      final file = io.File('${tempDir.path}/codex-chapter-${widget.lesson.day}.png');
+      await file.writeAsBytes(pngBytes);
+      
+      final xFile = XFile(file.path, mimeType: 'image/png');
       await Share.shareXFiles(
-        [file],
+        [xFile],
         text:
             'Chapter ${widget.lesson.day} complete — ${widget.lesson.chapterTitle}. #EntrepreneursCodex',
       );

@@ -940,17 +940,17 @@ final List<DailyLesson> allLessons = [
   // DAY 9 — Value Creation
   DailyLesson(
     day: 9,
-    title: 'Value Creation Mastery',
-    theme: 'Understanding that wealth follows value',
+    title: 'Value Creation & Your First Customer',
+    theme: 'Creating value and getting paid for it — starting today',
     category: 'skill',
     quote:
         'Strive not to be a success, but rather to be of value.',
     quoteAuthor: 'Albert Einstein',
     mindsetLesson:
-        'The fundamental equation of entrepreneurship is simple: Wealth = Value × Scale. You get paid in proportion to the value you create for others. The entrepreneurs who get rich are not the ones who chase money — they\'re the ones who obsess over creating value. Today you\'ll learn to think in terms of value creation and understand the different forms value can take.',
+        'The fundamental equation of entrepreneurship is simple: Wealth = Value × Scale. But here\'s the part most courses skip — you cannot scale what you haven\'t sold once. Today you\'ll learn to think in terms of value creation AND learn the tactical, uncomfortable art of cold outreach: how to reach people who don\'t know you exist and convince them to pay for the value you create. This is the bridge from "I have an idea" to "I have a customer."',
     skillName: 'Value Creation',
     skillDescription:
-        'The ability to identify, create, and deliver meaningful value that people are willing to pay for.',
+        'The ability to identify, create, and deliver meaningful value that people are willing to pay for — and then reach those people through cold outreach.',
     xpReward: 100,
     chapterTitle: 'Chapter IX — The Persuader',
     weekTheme: 'The Craft',
@@ -958,34 +958,34 @@ final List<DailyLesson> allLessons = [
     teaserHook: 'Most businesses die not from bad products, but from building something nobody wants. Tomorrow, you learn the art of asking.',
     quiz: [
       QuizQuestion(
-        question: 'Authentic selling is best understood as...',
-        options: ['Manipulating the buyer', 'Clarifying whether you can actually help', 'Pushing the deal', 'Smoothing over flaws'],
+        question: 'The most effective cold outreach message leads with...',
+        options: ['Your credentials', 'A specific observation about THEIR problem', 'A discount offer', 'Your story'],
         correctIndex: 1,
-        explanation: 'Selling is the act of clarifying fit. The best sellers say no often.',
+        explanation: 'Lead with their pain. Your credentials are the footnote, not the headline.',
       ),
       QuizQuestion(
-        question: 'The most powerful sales tool is...',
-        options: ['A great script', "Genuine curiosity about the buyer's problem", 'Confidence', 'A lower price'],
+        question: 'The "100 DMs" strategy works because...',
+        options: ['Spam converts', 'Volume creates the data to find what resonates', 'People love cold messages', 'Algorithms reward it'],
         correctIndex: 1,
-        explanation: 'Curiosity beats scripts. Every time.',
+        explanation: 'Volume is the teacher. After 100 attempts, you know what works and what doesn\'t.',
       ),
       QuizQuestion(
-        question: 'If a buyer is not a fit, the right move is to...',
-        options: ['Push anyway', 'Refer them elsewhere or walk away', 'Discount to close', 'Lie about fit'],
+        question: 'Value stacking means...',
+        options: ['Adding more features', 'Delivering multiple types of value (functional, emotional, social) simultaneously', 'Charging more', 'Bundling products'],
         correctIndex: 1,
-        explanation: "Walk away. Referrals from 'no' build your reputation for life.",
+        explanation: 'Stack the layers of value. Each layer increases willingness to pay and loyalty.',
       ),
       QuizQuestion(
-        question: 'The first question in a great sales conversation is usually...',
-        options: ["'What is your budget?'", "'What problem are you trying to solve?'", "'Can I close you today?'", "'Have you heard of us?'"],
+        question: 'The best cold email is usually...',
+        options: ['Long and thorough', '3-5 sentences with one clear ask', 'A sales pitch', 'Formal with your resume'],
         correctIndex: 1,
-        explanation: 'Problem-first. The product is the answer; the problem is the question.',
+        explanation: 'Short. Specific. One ask. Respect their time and you earn their attention.',
       ),
       QuizQuestion(
-        question: "A 'no' from a prospect usually means...",
-        options: ["You're bad at sales", 'Not yet, or not you, or not now', 'They are rude', 'You should lower price'],
+        question: 'Your first customer is most likely found through...',
+        options: ['Paid ads', 'Direct personal outreach to someone who already has the problem', 'A viral post', 'A press release'],
         correctIndex: 1,
-        explanation: "'No' is a status, not a verdict. Diagnose the no.",
+        explanation: 'Customer #1 almost always comes from a direct conversation, not a funnel.',
       ),
     ],
     videos: [
@@ -1007,50 +1007,50 @@ final List<DailyLesson> allLessons = [
     unlockBadge: '',
     sections: [
       LessonSection(
-        heading: 'What is Value?',
-        content:
-            'Value is anything that makes someone\'s life better — saving them time, saving them money, making them money, reducing their stress, improving their health, educating them, entertaining them, connecting them, making them feel something. Value is always defined by the receiver, not the creator. You haven\'t created value until someone else says you have.',
-      ),
-      LessonSection(
         heading: 'The 4 Types of Value',
         content:
-            '(1) Functional Value: solves a practical problem (Uber solves transportation). (2) Emotional Value: makes people feel something (luxury brands sell status and belonging). (3) Social Value: changes how others perceive them (LinkedIn premium signals professionalism). (4) Transformational Value: changes who they are (a fitness coach transforms a client\'s health and identity). The most profitable businesses deliver multiple types simultaneously.',
+            '(1) Functional Value: solves a practical problem (Uber solves transportation). (2) Emotional Value: makes people feel something (luxury brands sell status and belonging). (3) Social Value: changes how others perceive them (LinkedIn premium signals professionalism). (4) Transformational Value: changes who they are (a fitness coach transforms identity). The most profitable businesses deliver multiple types simultaneously. Your job: stack at least 2 types into everything you sell.',
       ),
       LessonSection(
-        heading: 'Value Stacking',
+        heading: 'The Cold Outreach Playbook',
         content:
-            'The best businesses don\'t just deliver one type of value — they stack multiple layers. A great restaurant delivers functional value (food), emotional value (atmosphere, experience), and social value (a place to be seen). Think about how you can stack value types in your business. Each layer increases what you can charge and how loyal your customers become.',
+            'Cold outreach is how you get your first 10 customers when you have zero audience. The formula: (1) IDENTIFY — find 50 specific people who have the exact problem you solve. Use LinkedIn, Twitter/X, Reddit, Facebook Groups, forums. (2) RESEARCH — spend 2 minutes on each. Find one specific thing about their situation. (3) REACH OUT — send a personalized message: "Hey [Name], I noticed [specific observation about their problem]. I built [your solution] that [specific benefit]. Would you be open to trying it for free / at a discount so I can get feedback?" (4) FOLLOW UP — 80% of sales happen after the 5th follow-up. Most people quit after 1.',
       ),
       LessonSection(
-        heading: 'The Value-First Principle',
+        heading: 'The 100 DMs Challenge',
         content:
-            'Most aspiring entrepreneurs start by asking "How can I make money?" This is backwards. Start by asking "How can I create massive value for a specific group of people?" When you create enough value, money becomes the natural byproduct. Give value first — through content, free resources, genuine help. This builds trust, and trust is the currency of business.',
+            'This is the single most powerful exercise for any new entrepreneur: send 100 direct messages to potential customers over the next 10 days (10/day). Not spam — personalized, research-backed messages that lead with their problem and offer genuine help. Here\'s what will happen: Messages 1-20: Mostly silence. You\'ll feel rejected. This is normal. Messages 21-50: You start finding what language resonates. Response rate climbs. Messages 51-80: You have real conversations. Some say "not now" (follow up later). Messages 81-100: You close your first 1-3 customers. More importantly, you now KNOW what people actually want. The 100 DMs challenge teaches you more about your market in 10 days than 6 months of "market research."',
+      ),
+      LessonSection(
+        heading: 'The Free-to-Paid Bridge',
+        content:
+            'Your first customer should NOT pay full price. Use the "Founding Customer" model: offer your product/service to the first 5-10 people at 50-80% off (or free) in exchange for: (1) Detailed feedback on what works and what doesn\'t. (2) A testimonial or case study when they see results. (3) Permission to use their story in future marketing. This removes the risk for them and gives you the two things you need most: proof that your thing works, and social proof to sell to the next 100 people.',
       ),
     ],
     challenges: [
       DailyChallenge(
         description:
-            'Analyze one successful business and identify all 4 types of value they deliver to their customers.',
-        type: 'thought',
+            'Send 10 personalized cold DMs today to people who have the problem you solve. Use the Cold Outreach Playbook formula. Track every response.',
+        type: 'action',
+        points: 40,
+      ),
+      DailyChallenge(
+        description:
+            'Write your "Founding Customer" offer: what you\'ll give, at what discount, and what you ask in return (feedback + testimonial).',
+        type: 'creative',
         points: 30,
       ),
       DailyChallenge(
         description:
-            'Create something valuable today and give it away for free — a tip, a resource list, a helpful tutorial.',
-        type: 'creative',
-        points: 35,
-      ),
-      DailyChallenge(
-        description:
-            'Ask 3 people: "What\'s the biggest problem in your daily life that you\'d pay to solve?" Record their answers.',
+            'Ask 3 people: "What\'s the biggest problem in your daily life that you\'d pay to solve?" Record their exact words — this is copywriting gold.',
         type: 'action',
-        points: 35,
+        points: 30,
       ),
     ],
     reflectionPrompt:
-        'What unique combination of skills, knowledge, and experience do you have that could create value for a specific group of people?',
+        'What is stopping you from reaching out to a potential customer TODAY? Is it fear of rejection, or fear of success? What would you do if you knew they\'d say yes?',
     actionStep:
-        'Write your "Value Statement": "I help [specific group] achieve [specific result] through [your unique approach]."',
+        'Write your "Value Statement": "I help [specific group] achieve [specific result] through [your unique approach]." Then send it to 3 real people and ask: "Would you pay for this?"',
   ),
 
   // DAY 10 — Sales Psychology
@@ -2104,17 +2104,17 @@ final List<DailyLesson> allLessons = [
   // DAY 19 — Financial Literacy
   DailyLesson(
     day: 19,
-    title: 'Financial Literacy for Founders',
-    theme: 'Mastering the numbers that make or break businesses',
+    title: 'Cash Flow Mastery',
+    theme: 'The #1 skill that keeps businesses alive',
     category: 'action',
     quote:
         'Revenue is vanity, profit is sanity, cash is reality.',
     quoteAuthor: 'Unknown',
     mindsetLesson:
-        'Many entrepreneurs avoid their numbers because finance feels intimidating or boring. But the numbers tell the truth about your business — and ignoring them is like flying a plane with your eyes closed. Financial literacy is not about becoming an accountant; it\'s about understanding the 5-10 key metrics that determine whether your business thrives or dies. Today you\'ll learn the essential financial concepts every founder must know.',
+        'The #1 reason businesses die is not bad products or weak marketing — it\'s running out of cash. You can be profitable on paper and still go bankrupt. Cash flow is the blood of your business: when it stops flowing, everything dies. Today you\'ll learn not just financial concepts but the specific weekly rituals, account structures, and rules that keep cash flowing and growing from Day 1.',
     skillName: 'Financial Fluency',
     skillDescription:
-        'The ability to understand, track, and make decisions based on the key financial metrics of a business.',
+        'The ability to track, manage, and grow your cash flow through disciplined weekly rituals, the Profit First system, and ruthless expense management.',
     xpReward: 100,
     chapterTitle: 'Chapter XIX — The Steward',
     weekTheme: 'The Execution',
@@ -2122,43 +2122,43 @@ final List<DailyLesson> allLessons = [
     teaserHook: "A pitch is not a deck. It's a story that makes the future inevitable. Tomorrow, you craft yours.",
     quiz: [
       QuizQuestion(
-        question: 'Cash flow differs from profit because...',
-        options: ['They are the same thing', "Profit is accounting; cash is what's in the bank", 'Cash is taxed', 'Profit includes inventory'],
+        question: 'The #1 reason businesses die is...',
+        options: ['Bad product', 'Running out of cash', 'No marketing', 'Wrong timing'],
         correctIndex: 1,
-        explanation: 'You can be profitable and broke. Cash is king.',
+        explanation: 'Cash is oxygen. Everything else is a symptom of running out.',
       ),
       QuizQuestion(
-        question: 'A P&L statement shows...',
-        options: ['Bank balance', 'Revenue, costs, and profit over a period', 'Cash movements', 'Investor list'],
+        question: 'Profit First means...',
+        options: ['Profit is the goal', 'Take your profit BEFORE paying expenses, then run the business on what remains', 'Charge more', 'Cut all costs'],
         correctIndex: 1,
-        explanation: 'Period performance. Top line, costs, bottom line.',
+        explanation: 'Revenue - Profit = Expenses. Not Revenue - Expenses = (hopefully) Profit.',
       ),
       QuizQuestion(
-        question: 'A balance sheet shows...',
-        options: ["This month's profit", 'What you own, what you owe, and your net worth — at a moment in time', 'Cash inflows', 'Sales'],
+        question: 'A healthy business should review its cash flow...',
+        options: ['Yearly at tax time', 'Every week — it is a non-negotiable ritual', 'Monthly', 'Only when worried'],
         correctIndex: 1,
-        explanation: 'Snapshot of assets, liabilities, equity. Moment in time.',
+        explanation: 'Weekly. 15 minutes. Every single week. Non-negotiable.',
       ),
       QuizQuestion(
-        question: "Healthy businesses monitor which 'big three' closely?",
-        options: ['Cash, margin, runway', 'Sales, employees, ads', 'Clicks, likes, shares', 'Founders, VCs, board'],
-        correctIndex: 0,
-        explanation: 'Cash, margin, runway. The other numbers are inputs to these.',
+        question: 'The "3-Month Runway Rule" means...',
+        options: ['Plan 3 months ahead', 'Always have 3 months of operating expenses in reserve cash', 'Launch in 3 months', 'Quit in 3 months'],
+        correctIndex: 1,
+        explanation: '3 months of expenses in a separate account. Touch it only in emergencies.',
       ),
       QuizQuestion(
-        question: 'The first financial habit to build is...',
-        options: ['Forecasting', 'Reading your own statements monthly', 'Hiring a CFO', 'Auditing quarterly'],
+        question: 'Separating personal and business finances is important because...',
+        options: ['The bank requires it', 'It gives clear visibility into business performance and makes taxes simple', 'It looks professional', 'It is free'],
         correctIndex: 1,
-        explanation: "You can't manage what you don't read. Monthly. Always.",
+        explanation: 'Clarity. Taxes. Legitimacy. Open that account today.',
       ),
     ],
     videos: [
       VideoResource(
-        title: 'Rich Dad Poor Dad in 10 Minutes',
-        speaker: 'Robert Kiyosaki',
+        title: 'Profit First Explained',
+        speaker: 'Mike Michalowicz',
         youtubeId: 'pN34FNbOKXc',
         durationMinutes: 10,
-        whyWatch: 'The core principles, fast.',
+        whyWatch: 'The system that guarantees you pay yourself.',
       ),
       VideoResource(
         title: 'Accounting for Entrepreneurs',
@@ -2171,66 +2171,66 @@ final List<DailyLesson> allLessons = [
     unlockBadge: '',
     sections: [
       LessonSection(
-        heading: 'The 3 Essential Statements',
+        heading: 'The Weekly Cash Flow Ritual',
         content:
-            '(1) Profit & Loss (P&L): Revenue minus Expenses = Profit. This tells you if you\'re making money. (2) Balance Sheet: Assets minus Liabilities = Net Worth. This tells you what you own vs. what you owe. (3) Cash Flow Statement: Cash In minus Cash Out = Net Cash Flow. This tells you if you can pay your bills. Profit and cash are NOT the same thing — you can be profitable on paper and still go bankrupt if cash isn\'t in the bank.',
+            'Every Sunday, 15 minutes. This single habit separates surviving businesses from dead ones. Here\'s the ritual: (1) Open your business account and note the current balance. (2) List every payment coming IN this week (invoices due, expected sales). (3) List every payment going OUT this week (rent, subscriptions, contractor payments). (4) Calculate: Balance + Inflows - Outflows = End-of-week cash. (5) If that number is negative or uncomfortably low, take action BEFORE the week starts — send invoices early, pause a subscription, delay a non-essential purchase. This ritual takes 15 minutes but prevents 90% of cash crises.',
       ),
       LessonSection(
-        heading: 'The 5 Numbers You Must Know',
+        heading: 'The Profit First System (Detailed)',
         content:
-            '(1) Customer Acquisition Cost (CAC): how much you spend to get one customer. (2) Lifetime Value (LTV): how much revenue one customer generates over their entire relationship with you. (3) LTV:CAC Ratio: should be 3:1 or higher. (4) Gross Margin: (Revenue - Direct Costs) / Revenue. Should be >50% for a healthy business. (5) Burn Rate: how much cash you\'re spending per month. Runway: cash in bank / burn rate = months until you run out of money.',
+            'Mike Michalowicz\'s system, made specific: Open 5 bank accounts (or sub-accounts): (1) INCOME — all revenue lands here first. (2) PROFIT (5-15%) — your reward. Don\'t touch it. (3) OWNER\'S PAY (50%) — your salary. (4) TAX (15%) — set aside for taxes. Never spend this. (5) OPERATING EXPENSES (30%) — everything else. Twice a month, on the 10th and 25th, transfer percentages from INCOME to the other 4 accounts. Start with small percentages and increase them quarterly. The forcing function: when expenses exceed the 30%, you must find ways to reduce them — not increase the allocation.',
       ),
       LessonSection(
-        heading: 'Profit First Methodology',
+        heading: 'The 3-Month Emergency Runway',
         content:
-            'Mike Michalowicz\'s "Profit First" system flips the traditional formula. Traditional: Sales - Expenses = Profit. Profit First: Sales - Profit = Expenses. The difference: you take profit FIRST (into a separate account you can\'t easily touch), then run your business on what remains. This forces efficiency and ensures you actually keep some of what you earn. Most entrepreneurs pay everyone else first and keep whatever is left (usually nothing).',
+            'Before you spend a single rupee on marketing, tools, or "growth," build a 3-month cash runway: 3 months of your total operating expenses (including your own salary) sitting in a separate account you DO NOT touch unless the business faces a genuine emergency. This runway buys you the most valuable thing in entrepreneurship: time. Time to pivot, time to recover from a bad month, time to find your next big client. Without this runway, one slow month can kill an otherwise healthy business.',
       ),
       LessonSection(
-        heading: 'Separate Personal and Business',
+        heading: 'The 5 Numbers Dashboard',
         content:
-            'The most basic financial mistake: mixing personal and business finances in one bank account. Open a separate business account TODAY (even if you haven\'t formally registered a business yet). This single act: (1) Makes tax time infinitely easier. (2) Gives you clear visibility into business performance. (3) Signals to yourself (and the IRS) that you\'re running a real business, not a hobby.',
+            'Track these 5 numbers weekly — write them on a sticky note on your monitor: (1) Cash in bank (not revenue — CASH). (2) Accounts receivable (money owed to you — chase it). (3) Monthly burn rate (total expenses ÷ 1 month). (4) Runway (Cash ÷ Monthly burn = months until zero). (5) Gross margin per sale (Revenue - Direct Cost per unit). If runway drops below 3 months, stop all non-essential spending immediately. If gross margin is below 50%, your pricing is wrong or your costs are too high. These 5 numbers are your cockpit instruments.',
       ),
     ],
     challenges: [
       DailyChallenge(
         description:
-            'Calculate your personal "burn rate": how much do you spend per month? How many months of "runway" do you have in savings?',
-        type: 'thought',
-        points: 30,
-      ),
-      DailyChallenge(
-        description:
-            'Open a separate bank account for your business (or set up a sub-account) today. Even if there\'s no money in it yet.',
+            'Open a separate bank account (or sub-account) for your business TODAY. Even if there\'s no money in it yet. Name it "Business Operating."',
         type: 'action',
         points: 40,
       ),
       DailyChallenge(
         description:
-            'For one product/service you use, estimate: what\'s their CAC? What\'s their LTV? What\'s their LTV:CAC ratio?',
+            'Calculate your personal burn rate: add up every monthly expense (rent, food, subscriptions, transport). How many months of runway do you have in savings?',
         type: 'thought',
+        points: 30,
+      ),
+      DailyChallenge(
+        description:
+            'Set up a simple spreadsheet with the 5 Numbers Dashboard. Fill it in with today\'s real numbers — even if most are zero.',
+        type: 'action',
         points: 30,
       ),
     ],
     reflectionPrompt:
-        'What is your current relationship with money and numbers? Do you avoid looking at your finances? What belief about money might be holding you back?',
+        'What is your current relationship with money and numbers? Do you avoid looking at your finances? What belief about money might be holding you back from building real wealth?',
     actionStep:
-        'Set up a simple spreadsheet tracking your 5 key numbers (even if most are \$0 right now). The habit of tracking matters more than the current numbers.',
+        'Do your first Weekly Cash Flow Ritual right now. Open your bank account, list what\'s coming in and going out this week, and write down the number. This 15-minute habit starts today.',
   ),
 
   // DAY 20 — Pitching
   DailyLesson(
     day: 20,
-    title: 'The Art of the Pitch',
-    theme: 'Communicating your idea so people say YES',
+    title: 'Copywriting & The Art of Persuasion',
+    theme: 'The #1 skill that turns words into money',
     category: 'action',
     quote:
-        'If you can\'t explain it simply, you don\'t understand it well enough.',
-    quoteAuthor: 'Albert Einstein',
+        'The pen is mightier than the sword — and far more profitable.',
+    quoteAuthor: 'Gary Halbert (adapted)',
     mindsetLesson:
-        'Your ability to pitch — to investors, customers, partners, or potential hires — directly determines your entrepreneurial success. A great pitch is not about fancy slides or buzzwords; it\'s about telling a compelling story that makes people feel the problem, see the solution, and believe YOU are the person to make it happen. Today you\'ll learn the frameworks for crafting pitches that win.',
+        'Copywriting is the single most valuable skill any entrepreneur can learn. Every email you send, every ad you write, every landing page, every DM, every social media caption, every pitch deck, every product description — all of it is copywriting. Great copy turns strangers into customers. Bad copy turns customers into ghosts. Today you will learn the frameworks that professional copywriters use to generate millions in revenue — and you will practice them immediately.',
     skillName: 'Persuasive Communication',
     skillDescription:
-        'The ability to articulate an idea, vision, or offer in a way that captures attention, builds desire, and inspires action.',
+        'The ability to write words that capture attention, build desire, and drive action — across emails, ads, landing pages, DMs, and every other medium.',
     xpReward: 100,
     chapterTitle: 'Chapter XX — The Pitch',
     weekTheme: 'The Execution',
@@ -2238,99 +2238,99 @@ final List<DailyLesson> allLessons = [
     teaserHook: "Time is the only asset you can't earn back. Tomorrow, you master it.",
     quiz: [
       QuizQuestion(
-        question: 'The best pitches are usually...',
-        options: ['Long and detailed', "Short and tailored to the listener's problem", 'Filled with jargon', 'Full of numbers'],
+        question: 'The AIDA framework stands for...',
+        options: ['Action, Interest, Desire, Attention', 'Attention, Interest, Desire, Action', 'Awareness, Insight, Decision, Agreement', 'Appeal, Intrigue, Deal, Acceptance'],
         correctIndex: 1,
-        explanation: 'Short. Tailored. About them, not you.',
+        explanation: 'Attention → Interest → Desire → Action. The oldest and most reliable persuasion sequence.',
       ),
       QuizQuestion(
-        question: 'A strong pitch opening should...',
-        options: ['Introduce the team', 'Name the problem and why it matters now', 'State the valuation', 'Quote a famous person'],
+        question: 'The PAS formula works because it...',
+        options: ['Is short', 'Names the Pain, Agitates it to make it urgent, then presents the Solution', 'Uses big words', 'Avoids selling'],
         correctIndex: 1,
-        explanation: 'Problem first. Stakes second. Solution third. Always.',
+        explanation: 'Pain → Agitate → Solve. People buy to escape pain faster than they buy to gain pleasure.',
       ),
       QuizQuestion(
-        question: "A 'deck's' job is to...",
-        options: ['Replace the pitch', 'Support the conversation, not perform it', 'Be beautiful', 'Show logos'],
+        question: 'A great headline must...',
+        options: ['Be clever', 'Make a specific promise to a specific person', 'Use all caps', 'Be long'],
         correctIndex: 1,
-        explanation: 'Deck is the sidekick. You are the hero.',
+        explanation: 'Specific promise to a specific person. Cleverness without clarity is invisible.',
       ),
       QuizQuestion(
-        question: 'When pitching, numbers are most powerful when they...',
-        options: ['Are huge', 'Are specific and tied to a unit of value', 'Are rounded', 'Are projected'],
+        question: 'The most powerful word in copywriting is...',
+        options: ['Free', 'You', 'Amazing', 'Guaranteed'],
         correctIndex: 1,
-        explanation: "Specific. Tied to a unit. Defensible. That's what makes a number land.",
+        explanation: '"You" — because great copy is always about the reader, never about the writer.',
       ),
       QuizQuestion(
-        question: 'The single most common pitch mistake is...',
-        options: ['Being too short', "Talking about yourself instead of the buyer's outcome", 'Asking for too much', 'Not enough slides'],
+        question: 'Every piece of copy should end with...',
+        options: ['A thank you', 'One clear call to action (CTA) telling the reader exactly what to do next', 'A signature', 'A disclaimer'],
         correctIndex: 1,
-        explanation: 'About them, by way of you. The pivot is in the pronouns.',
+        explanation: 'One CTA. Not three. Not "learn more." One specific action: "Click here to start your free trial."',
       ),
     ],
     videos: [
       VideoResource(
-        title: 'How to Pitch Anything in 60 Seconds',
-        speaker: 'Alyce Hays',
+        title: 'Copywriting for Beginners',
+        speaker: 'Alex Cattoni',
         youtubeId: 'TcgI4nXxAc0',
-        durationMinutes: 6,
-        whyWatch: 'The single best short-pitch framework.',
+        durationMinutes: 12,
+        whyWatch: 'The clearest intro to copywriting frameworks on YouTube.',
       ),
       VideoResource(
-        title: 'Pitching to Investors',
-        speaker: 'Mark Suster',
+        title: 'How to Write Copy That Sells',
+        speaker: 'Jim Edwards',
         youtubeId: 'XTTtyK4P1zM',
         durationMinutes: 13,
-        whyWatch: 'What VCs actually listen for.',
+        whyWatch: 'Practical templates you can use today.',
       ),
     ],
     unlockBadge: '',
     sections: [
       LessonSection(
-        heading: 'The Elevator Pitch Formula',
+        heading: 'The AIDA Framework',
         content:
-            'A great elevator pitch (30 seconds) follows this structure: "You know how [target customer] struggles with [specific problem]? Well, what we do is [your solution in plain language]. Unlike [alternatives], we [key differentiator]. So far, we\'ve [traction/proof point]." Example: "You know how small business owners waste hours manually tracking expenses? We built an app that auto-categorizes every transaction. Unlike QuickBooks which is overkill for solopreneurs, we\'re dead simple — take a photo of a receipt and you\'re done. We already have 200 beta users."',
+            'The most battle-tested persuasion structure in history: (1) ATTENTION — Stop the scroll. Use a bold headline, a surprising stat, or a provocative question. "97% of businesses fail because of this one mistake." (2) INTEREST — Hook them with relevance. "If you\'ve ever launched something and heard crickets, this is why." (3) DESIRE — Paint the transformation. "Imagine waking up to 10 new customer inquiries every morning — without running a single ad." (4) ACTION — Tell them exactly what to do. "Click here to download the free template." Use AIDA for emails, landing pages, social posts, ads, and pitch decks.',
       ),
       LessonSection(
-        heading: 'The Problem-Solution-Benefit Structure',
+        heading: 'The PAS Formula (Pain-Agitate-Solve)',
         content:
-            'Every effective pitch has three parts: (1) Problem — paint a vivid picture of the pain. Make them FEEL it. "Imagine spending 5 hours every Sunday night manually entering receipts..." (2) Solution — introduce your idea as the obvious answer. "Now imagine snapping a photo and being done in 3 seconds." (3) Benefit — articulate the transformation. "That\'s 20 hours a month back — time you can spend with family or growing your business."',
+            'When you need to write fast and persuasively, use PAS: (1) PAIN — Name the exact problem. "You spend 3 hours every day on admin tasks that make zero money." (2) AGITATE — Make the pain worse. "That\'s 1,095 hours a year — 45 full days — spent on work that a ₹500/month tool could handle. Meanwhile your competitors are spending those hours closing deals." (3) SOLVE — Present your solution as the obvious answer. "Our automation toolkit handles all of it in 10 minutes/day. Here\'s what to do next." PAS works because people are 2x more motivated to avoid pain than to gain pleasure.',
       ),
       LessonSection(
-        heading: 'The 10/20/30 Rule (Guy Kawasaki)',
+        heading: 'Headlines: The 80/20 of Copy',
         content:
-            'For formal presentations: 10 slides, 20 minutes, 30-point minimum font size. 10 slides because humans can only absorb ~10 concepts in a sitting. 20 minutes because you\'ll spend the remaining 40 minutes of a 1-hour slot on discussion and questions. 30-point font because it forces you to put less text on slides (people can\'t read and listen simultaneously) and makes the content visible from the back of the room.',
+            '80% of people read the headline. Only 20% read the rest. Your headline IS the ad. Rules for headlines that convert: (1) Be SPECIFIC — "How I Made ₹47,000 in 30 Days" beats "How to Make Money." (2) Include a NUMBER — numbers create credibility and specificity. (3) Promise a BENEFIT — what will the reader GET? Not what will they learn, but what outcome will they achieve? (4) Create URGENCY — why should they read this NOW? (5) Use POWER WORDS — free, proven, secret, simple, fast, guaranteed, new. Test: read your headline and ask "Would I click on this?" If no, rewrite it.',
       ),
       LessonSection(
-        heading: 'Handling Q&A Like a Pro',
+        heading: 'The CTA: Where Money Is Made',
         content:
-            'The pitch itself matters, but the Q&A often determines the outcome. Rules: (1) Never bluff — if you don\'t know, say "That\'s a great question. I don\'t have that data right now, but I\'ll get it to you by tomorrow." (2) Answer the question behind the question — "How big is the market?" often means "Is this big enough to be worth my time?" (3) Bridge back to your strengths — answer the question, then connect it to something you\'re excited about.',
+            'A Call To Action must be: (1) SPECIFIC — "Download the free PDF now" not "Learn more." (2) URGENT — "Only 50 spots available" or "Offer ends Friday." (3) LOW-RISK — "Try free for 14 days, cancel anytime." (4) VISIBLE — one CTA per page/email. Never bury it. Never give 3 options. Common CTAs ranked by conversion: "Start my free trial" > "Get instant access" > "Download now" > "Sign up" > "Learn more." The difference between "Learn more" and "Start my free trial" can be a 300% conversion increase. Words matter. Every word.',
       ),
     ],
     challenges: [
       DailyChallenge(
         description:
-            'Write and rehearse your 30-second elevator pitch using the formula. Time yourself. Refine until it\'s under 30 seconds.',
+            'Write 3 different headlines for your product/service using the headline rules. Test them by asking 3 people: "Which one would make you click?"',
         type: 'creative',
         points: 35,
       ),
       DailyChallenge(
         description:
-            'Pitch your idea to one person today — a friend, family member, or stranger. Notice their reaction and what questions they ask.',
-        type: 'action',
+            'Write a complete PAS email for your product/service: 3 sentences of Pain, 2 sentences of Agitate, 3 sentences of Solve, 1 clear CTA.',
+        type: 'creative',
         points: 40,
       ),
       DailyChallenge(
         description:
-            'Watch one successful pitch (Shark Tank clip, TED talk, or startup demo day) and analyze its structure.',
+            'Rewrite one existing piece of your copy (bio, social post, or product description) using the AIDA framework. Compare before and after.',
         type: 'skill',
         points: 25,
       ),
     ],
     reflectionPrompt:
-        'If you had to explain your business idea to a smart 12-year-old in 30 seconds, what would you say? If you can\'t do this, your pitch isn\'t simple enough yet.',
+        'Look at the last 5 emails or messages you sent to potential customers. How many had a clear, specific call to action? How many led with the customer\'s problem instead of your credentials?',
     actionStep:
-        'Record yourself delivering your elevator pitch on video. Watch it back. Refine. Repeat until you\'re proud of it.',
+        'Write your "Core Sales Email" using PAS + a strong CTA. Save it as a template. You will use this email hundreds of times — it is the single most valuable document in your business.',
   ),
 
   // DAY 21 — Networking
@@ -2688,17 +2688,17 @@ final List<DailyLesson> allLessons = [
   // DAY 24 — Brand Building
   DailyLesson(
     day: 24,
-    title: 'Building a Magnetic Brand',
-    theme: 'Creating a brand people love and trust',
+    title: 'Personal Brand & Online Presence',
+    theme: 'Building an audience from zero — the modern entrepreneur\'s moat',
     category: 'monetization',
     quote:
         'A brand is no longer what we tell the consumer it is — it is what consumers tell each other it is.',
     quoteAuthor: 'Scott Cook',
     mindsetLesson:
-        'A brand is not a logo or a color palette. A brand is what people say about you when you\'re not in the room. It\'s the emotional reaction people have when they hear your name. Building a strong brand is one of the highest-ROI activities in business because it makes everything else — marketing, sales, pricing, hiring — easier. Today you\'ll learn the fundamentals of brand building.',
+        'In 2024+, your personal brand IS your business. Before anyone buys your product, they Google you. Before they hire your agency, they check your LinkedIn. Before they trust your advice, they see your Twitter/X. Your online presence is your resume, your portfolio, your trust signal, and your distribution channel — all at once. Today you\'ll learn the specific, tactical systems for building a personal brand from zero followers to a monetizable audience.',
     skillName: 'Brand Strategy',
     skillDescription:
-        'The ability to define, communicate, and consistently deliver a distinctive identity that resonates emotionally with a target audience.',
+        'The ability to build, grow, and monetize a personal brand through consistent content creation, platform strategy, and audience engagement — from zero to a following that trusts and buys from you.',
     xpReward: 100,
     chapterTitle: 'Chapter XXIV — The Brand',
     weekTheme: 'The Mastery',
@@ -2706,34 +2706,34 @@ final List<DailyLesson> allLessons = [
     teaserHook: "Data is not a report. It's a compass. Tomorrow, you learn to read the terrain.",
     quiz: [
       QuizQuestion(
-        question: "A 'brand' is, in essence,...",
-        options: ['A logo', 'A promise kept a thousand times', 'A color palette', 'A tagline'],
+        question: 'The #1 purpose of a personal brand is...',
+        options: ['Fame', 'Trust — people buy from people they trust', 'Followers', 'Vanity'],
         correctIndex: 1,
-        explanation: "Promise → behavior → reputation. That's a brand.",
+        explanation: 'Trust is the currency. Followers are the scoreboard. Trust comes first.',
       ),
       QuizQuestion(
-        question: 'Personal branding is most powerful when it is...',
-        options: ['Polished and broad', 'Specific and true', 'Always on', 'Generic'],
+        question: 'Content pillars are...',
+        options: ['Types of posts', '3-5 core topics you ALWAYS post about so your audience knows what to expect from you', 'Popular hashtags', 'Trends to follow'],
         correctIndex: 1,
-        explanation: "Specific. True. Recognizable. That's the triangle.",
+        explanation: 'Pillars = predictability. Predictability = trust. Trust = sales.',
       ),
       QuizQuestion(
-        question: 'Brand consistency matters most for...',
-        options: ['Aesthetics', 'Trust and recall', 'SEO', 'Sales'],
+        question: 'The best posting frequency for a new creator is...',
+        options: ['Once a month', 'Daily or near-daily — consistency beats quality at first', 'Only when inspired', 'Twice a year'],
         correctIndex: 1,
-        explanation: 'Trust is a function of predictability. Be predictable in the right things.',
+        explanation: 'Volume first. Refinement second. You can\'t optimize what doesn\'t exist.',
       ),
       QuizQuestion(
-        question: 'The cheapest brand asset to build is...',
-        options: ['Logo', 'A distinctive point of view expressed consistently', 'A website', 'A press kit'],
+        question: 'The "1000 True Fans" concept means...',
+        options: ['Get 1000 followers', 'You only need 1000 people who trust you enough to buy everything you make', 'Post 1000 times', 'Follow 1000 people'],
         correctIndex: 1,
-        explanation: 'POV is the multiplier. Everything else flows from it.',
+        explanation: '1000 people × ₹8,000/year each = ₹80 lakh/year. That\'s a great business.',
       ),
       QuizQuestion(
-        question: "Your 'brand voice' should reflect...",
-        options: ['Industry norms', 'Your authentic personality, filtered', "Your competitor's voice", 'Trends'],
+        question: 'The fastest way to grow from 0 to 1000 followers is...',
+        options: ['Paid ads', 'Consistently posting valuable content and engaging genuinely in communities where your audience already hangs out', 'Buying followers', 'Going viral once'],
         correctIndex: 1,
-        explanation: 'You, on purpose. Filtered, not faked.',
+        explanation: 'Show up where they already are. Add value. Do it daily. Growth follows.',
       ),
     ],
     videos: [
@@ -2755,50 +2755,50 @@ final List<DailyLesson> allLessons = [
     unlockBadge: '',
     sections: [
       LessonSection(
-        heading: 'Brand = Promise + Experience',
+        heading: 'The Content Pillar System',
         content:
-            'Your brand is the intersection of: (1) The promise you make (what customers expect when they choose you). (2) The experience you deliver (what actually happens). When promise and experience match consistently, trust builds. When they don\'t match, your brand erodes. Volvo\'s promise: safety. If a Volvo crashed poorly, the brand would be damaged more than a sports car brand with the same crash — because the promise was broken.',
+            'Pick 3-5 topics you will ALWAYS post about. These are your content pillars. Example for an entrepreneur: (1) Lessons from building my business (behind-the-scenes). (2) Actionable tips in my niche (teach what you know). (3) Personal stories that shaped my worldview (vulnerability builds connection). (4) Book/podcast takeaways (curate knowledge for your audience). (5) Hot takes on industry trends (opinions build identity). Every post should fit one pillar. If it doesn\'t fit, don\'t post it. Pillars make you KNOWN FOR something — and being known for something is the foundation of monetization.',
       ),
       LessonSection(
-        heading: 'The 3 Brand Layers',
+        heading: 'The 30-Day Audience Growth Playbook',
         content:
-            '(1) Functional Layer: what do you DO? (We make project management software.) (2) Emotional Layer: how do people FEEL when they use you? (They feel in control, calm, organized.) (3) Identity Layer: what does using you SAY about them? (They\'re a competent professional who has their act together.) Most brands only communicate Layer 1. Great brands communicate all three.',
+            'From 0 to your first 1000 followers: Days 1-7: Post daily. Focus on quality hooks (first line must stop the scroll). Engage with 20 accounts in your niche daily — leave thoughtful comments, not "great post!" Days 8-14: Find 3 creators bigger than you and add genuine value in their comments. Their audience discovers you. Days 15-21: DM 5 people per day who engage with your content. Build real relationships. Offer to collaborate. Days 22-30: Create one "pillar piece" — a thread, carousel, or long post that synthesizes your best thinking. This becomes your signature piece that people share. The math: 20 daily engagements × 30 days = 600 touchpoints. Even a 5% follow rate = 30 new followers/day = 900 in 30 days.',
       ),
       LessonSection(
-        heading: 'The Brand Voice Exercise',
+        heading: 'Platform Selection Strategy',
         content:
-            'Define your brand voice: If your brand were a person, (1) How old are they? (2) What\'s their gender expression? (3) What\'s their education level? (4) How do they speak — formal or casual? Jargon or plain language? Funny or serious? (5) What topics do they care about? (6) What would they NEVER say? Write this down. Use it to guide every piece of content, every email, every social post.',
+            'Don\'t be everywhere. Pick ONE primary platform and dominate it: LinkedIn — if you sell to businesses (B2B), professionals, or corporate clients. Twitter/X — if you sell knowledge, courses, or digital products. Instagram — if your business is visual (design, food, fashion, fitness, travel). YouTube — if you can teach on camera (long-term SEO play; videos compound). Start with ONE. Build to 1000 engaged followers. Only then add a second platform by repurposing your best-performing content. Repurposing > creating new. A great LinkedIn post becomes a Twitter thread, an Instagram carousel, a YouTube Short, and a newsletter.',
       ),
       LessonSection(
-        heading: 'Consistency > Cleverness',
+        heading: 'The Monetization Ladder',
         content:
-            'The most common branding mistake: constantly changing your message, look, or voice to be "fresh." The brands that win are boringly consistent. Coca-Cola has used the same core brand elements for 100+ years. Consistency builds memory. Memory builds trust. Trust builds sales. Pick your brand elements (voice, visual style, core message) and stick with them for at least 2 years before considering a refresh.',
+            'Your audience monetization follows a ladder: (1) 0-500 followers: You monetize through direct outreach. Your content builds credibility. Leads come from DMs. (2) 500-2,000: You can sell a low-ticket digital product (₹500-2,000 ebook/template). (3) 2,000-10,000: You can launch a course, community, or coaching program (₹5,000-25,000). (4) 10,000+: Sponsorships, high-ticket offers, and speaking gigs become possible. Key insight: you don\'t need a huge audience to make money. 500 followers who trust you > 50,000 who scroll past you. Depth of relationship > breadth of reach.',
       ),
     ],
     challenges: [
       DailyChallenge(
         description:
-            'Define your brand voice using the Brand Voice Exercise. Write a 1-page "Brand Voice Guide."',
+            'Define your 3-5 content pillars. Write one sentence per pillar explaining what you\'ll post about and why your audience cares.',
         type: 'creative',
         points: 35,
       ),
       DailyChallenge(
         description:
-            'Identify 3 brands you personally love. For each, articulate: what promise do they make? What experience do they deliver? How do they make you feel?',
-        type: 'thought',
+            'Post ONE piece of content today on your chosen platform. Use a hook in the first line. Don\'t overthink it — publish is better than perfect.',
+        type: 'action',
+        points: 35,
+      ),
+      DailyChallenge(
+        description:
+            'Engage with 20 accounts in your niche: leave thoughtful, value-adding comments (not "nice post!"). Track which ones respond.',
+        type: 'action',
         points: 30,
-      ),
-      DailyChallenge(
-        description:
-            'Write one piece of content (social post, note, or short video) in your defined brand voice.',
-        type: 'creative',
-        points: 35,
       ),
     ],
     reflectionPrompt:
-        'If your customers were describing your brand to a friend at a dinner party, what would you want them to say? What are you doing to make that description true?',
+        'If someone Googled your name right now, what would they find? Does it represent the entrepreneur you want to become? What\'s the gap between your current online presence and your ideal one?',
     actionStep:
-        'Write your "Brand Promise" in one sentence: "When you work with [brand name], you will always [specific promise]."',
+        'Choose your ONE primary platform. Update your bio with your value statement from Day 9. Post your first piece of content today. The clock starts now.',
   ),
 
   // DAY 25 — Data-Driven Decisions
@@ -2920,17 +2920,17 @@ final List<DailyLesson> allLessons = [
   // DAY 26 — Multiple Income Streams
   DailyLesson(
     day: 26,
-    title: 'Designing Multiple Income Streams',
-    theme: 'Building wealth through diversification',
+    title: 'Monetization Models Masterclass',
+    theme: 'The exact business models that make money — and how to start each one this week',
     category: 'monetization',
     quote:
         'Never depend on a single income. Make investments to create a second source.',
     quoteAuthor: 'Warren Buffett',
     mindsetLesson:
-        'Financial security for entrepreneurs comes not from one big win, but from multiple income streams that collectively provide stability and growth. When you have 3-5 income streams, the failure of any one is an inconvenience, not a catastrophe. Today you\'ll learn to think in terms of income stream portfolios and identify opportunities to diversify your revenue.',
+        'Most aspiring entrepreneurs fail not because they lack skills, but because they don\'t know WHICH business model to use. Today is the most tactical day of the entire codex. You will learn 6 proven monetization models, see the exact steps to launch each one, and understand which model fits YOUR skills and situation. By tonight, you will know exactly which model to start with and have the first 3 steps written down.',
     skillName: 'Revenue Diversification',
     skillDescription:
-        'The ability to design, build, and manage multiple independent sources of revenue that collectively provide financial resilience.',
+        'The ability to choose, launch, and grow the right monetization model for your skills and market — from freelancing to digital products to scalable businesses.',
     xpReward: 100,
     chapterTitle: 'Chapter XXVI — The Stream',
     weekTheme: 'The Mastery',
@@ -2938,34 +2938,34 @@ final List<DailyLesson> allLessons = [
     teaserHook: "Leadership is not a title. It's a discipline. Tomorrow, you step into the version of you that others follow.",
     quiz: [
       QuizQuestion(
-        question: 'Multiple income streams primarily provide...',
-        options: ['More work', 'Optionality and resilience', 'Confusion', 'Tax breaks'],
+        question: 'The fastest path to your first ₹10,000 online is usually...',
+        options: ['Building a SaaS', 'Freelancing or consulting — selling a skill you already have', 'Creating a course', 'Dropshipping'],
         correctIndex: 1,
-        explanation: 'Streams = optionality. Optionality = freedom.',
+        explanation: 'Freelancing requires zero startup capital and leverages existing skills. Start there.',
       ),
       QuizQuestion(
-        question: 'The most underpriced asset you can monetize is...',
-        options: ['Your house', "Knowledge you've already learned", 'Your car', 'Crypto'],
+        question: 'A digital product is powerful because...',
+        options: ['It is trendy', 'You create it once and sell it infinitely with near-zero marginal cost', 'It is easy', 'Everyone buys digital'],
         correctIndex: 1,
-        explanation: 'Knowledge is the most compressed, valuable asset. Codify it.',
+        explanation: 'Build once. Sell forever. That is the digital product equation.',
       ),
       QuizQuestion(
-        question: "A 'leveraged' income stream scales primarily through...",
-        options: ['More hours', "Other people's time, capital, or code", 'Better tools', 'More ads'],
+        question: 'The "productized service" model works by...',
+        options: ['Discounting your service', 'Packaging your service as a fixed-scope, fixed-price product that can be delivered systematically', 'Hiring more people', 'Automating everything'],
         correctIndex: 1,
-        explanation: 'Leverage = time × others × capital × code. Pick the right multiplier.',
+        explanation: 'Fixed scope + fixed price + documented process = scalable service. That is productization.',
       ),
       QuizQuestion(
-        question: 'A high-margin product/service typically...',
-        options: ['Costs more to deliver', 'Delivers disproportionate value relative to cost', 'Sells at low price', 'Has no support'],
+        question: 'Before launching multiple income streams, you should...',
+        options: ['Start all at once for safety', 'Get ONE stream to consistent revenue first, then add others', 'Wait for the perfect idea', 'Build a team'],
         correctIndex: 1,
-        explanation: 'Margin lives at the intersection of value and cost. Move both.',
+        explanation: 'One stream. Consistent revenue. Then diversify. Premature diversification kills focus.',
       ),
       QuizQuestion(
-        question: "Diversification's biggest hidden risk is...",
-        options: ["It's free", 'It dilutes focus if done too early', 'It is illegal', 'It is mandatory'],
+        question: 'The best business model for a beginner with no audience is...',
+        options: ['Course creation', 'Service-based (freelancing, consulting, agency) — because it requires zero audience', 'SaaS', 'Affiliate marketing'],
         correctIndex: 1,
-        explanation: 'Diversify only after one stream is real. Premature diversification dilutes.',
+        explanation: 'Services need clients, not audiences. You find clients through outreach, not content.',
       ),
     ],
     videos: [
@@ -2987,50 +2987,50 @@ final List<DailyLesson> allLessons = [
     unlockBadge: '',
     sections: [
       LessonSection(
-        heading: 'The 7 Types of Income Streams',
+        heading: 'Model 1: Freelancing (Start This Week)',
         content:
-            '(1) Active Service Income: trading time for money (consulting, freelancing). (2) Product Income: selling physical or digital goods. (3) Subscription Income: recurring revenue (SaaS, membership). (4) Affiliate/Referral Income: commissions for recommending products. (5) Advertising/Sponsorship Income: getting paid for attention (blog, podcast, YouTube). (6) Licensing/Royalty Income: getting paid for IP (book, course, patent). (7) Investment Income: money making money (stocks, real estate, business equity). Most entrepreneurs start with Type 1 and gradually add others.',
+            'The fastest path to entrepreneurial income. Steps: (1) Pick ONE skill you already have (writing, design, coding, video editing, social media, data analysis, tutoring). (2) Create a profile on Upwork, Fiverr, or Freelancer. (3) Set your rate at 70% of market rate to win your first 3 clients. (4) Deliver exceptional work. Get 5-star reviews. (5) Raise your rate by 20% after every 5 clients. Timeline: First client in 1-2 weeks. ₹10,000-50,000/month within 2-3 months. The exit: freelancing teaches you what businesses actually need. Use that knowledge to build Model 2 or Model 3.',
       ),
       LessonSection(
-        heading: 'The Income Stream Matrix',
+        heading: 'Model 2: Digital Products (₹0 Startup Cost)',
         content:
-            'Map your income streams on two axes: (1) Effort Required (high to low). (2) Income Potential (low to high). Your goal: move from the "high effort, low income" quadrant toward "low effort, high income" over time. Active service income is high effort, medium income. A digital product is medium effort to create, then low effort to maintain, with high income potential. A successful SaaS is low daily effort with very high income potential.',
+            'Create once, sell forever. Best digital products for beginners: (1) Templates (Notion, Canva, spreadsheets) — ₹200-2,000 each. Sell on Gumroad. (2) Ebooks/guides — ₹500-5,000 each. Solve one specific problem in 20-50 pages. (3) Mini-courses — ₹2,000-10,000. Teach what you know in 5-10 video lessons. Steps to launch: Pick a problem your audience has → Create a solution in 1-2 weeks → Set up a Gumroad page (free) → Use your Day 20 copywriting skills to write the sales page → Drive traffic through Day 24 content strategy. Target: ₹10,000-1,00,000/month with 3-5 products.',
       ),
       LessonSection(
-        heading: 'The Adjacent Stream Strategy',
+        heading: 'Model 3: Productized Agency (Scalable Services)',
         content:
-            'Don\'t jump from consulting to launching a SaaS with no steps in between. Build adjacent streams: If you\'re a consultant (Stream 1), create a digital template/toolkit based on your methodology (Stream 2). Then offer a group program teaching your method (Stream 3). Then record the group program as an evergreen course (Stream 4). Then build software that automates your method (Stream 5). Each stream builds on the previous one\'s audience and credibility.',
+            'The bridge between freelancing and a real business. How it works: (1) Take the service you freelance → package it as a fixed-scope, fixed-price offer. Example: "5 social media posts per week for ₹25,000/month." (2) Document your process into an SOP (Day 17). (3) Hire a junior freelancer to do the delivery at 30-40% of what you charge. (4) You manage the client relationship and quality control. (5) Add more clients. Scale by hiring more delivery people. Revenue math: 5 clients × ₹25,000/month = ₹1,25,000/month. Delivery cost: ₹50,000. Your profit: ₹75,000/month — working 10-15 hours/week on management.',
       ),
       LessonSection(
-        heading: 'The 1000 True Fans Theory',
+        heading: 'Model 4-6: Advanced Models (Build Toward These)',
         content:
-            'Kevin Kelly\'s concept: you don\'t need millions of customers. You need 1000 "true fans" — people who will buy almost everything you create. If 1000 people each spend \$100/year on your various offerings, that\'s \$100K/year. With 1000 true fans, you can build a very comfortable living through multiple streams: a book (\$20), a course (\$200), a premium community (\$300/year), consulting (\$500/session), a conference (\$1000/ticket). Each stream serves the same 1000 people in different ways.',
+            'After mastering Models 1-3, level up: Model 4 — Coaching/Consulting (₹5,000-50,000/session): Package your expertise as 1-on-1 or group coaching. Requires: proven results + testimonials. Model 5 — SaaS/App (recurring revenue): Build software that solves a problem. Requires: technical skills or a technical co-founder + validated demand. Model 6 — Content Monetization (audience-based): Build an audience → monetize through sponsorships, premium content, and community. Requires: 5,000+ engaged followers. The progression: Freelancing → Digital Products → Agency → Coaching → SaaS → Content Empire. Each step builds on the last.',
       ),
     ],
     challenges: [
       DailyChallenge(
         description:
-            'Map your current/planned income streams on the Income Stream Matrix. Which quadrant are they in? How can you move them toward "low effort, high income"?',
-        type: 'thought',
-        points: 30,
-      ),
-      DailyChallenge(
-        description:
-            'Brainstorm 3 "adjacent streams" you could add to your primary income source using the Adjacent Stream Strategy.',
+            'Choose your FIRST monetization model from the 6 options. Write down: (1) Which model. (2) What specific skill/service/product. (3) Who your first 5 customers will be. (4) Your price.',
         type: 'creative',
+        points: 40,
+      ),
+      DailyChallenge(
+        description:
+            'Take the FIRST action on your chosen model TODAY. If freelancing: create your profile. If digital products: outline your first product. If agency: write your offer.',
+        type: 'action',
         points: 35,
       ),
       DailyChallenge(
         description:
-            'Calculate: how many "true fans" would you need at what average annual spend to reach your income goal?',
+            'Calculate: how many clients/sales at what price would you need to replace your current income? Write the specific math.',
         type: 'thought',
-        points: 35,
+        points: 25,
       ),
     ],
     reflectionPrompt:
-        'If your primary income source disappeared overnight, how long could you survive? What\'s your plan for building at least one backup stream?',
+        'If your primary income source disappeared overnight, which of the 6 models could you launch FASTEST? What skills do you already have that are monetizable right now?',
     actionStep:
-        'Identify ONE adjacent income stream you could start building this month. Write down the first 3 steps to launch it.',
+        'Write your "First Revenue Plan": Model chosen, specific offer, price, and the first 3 steps to get your first paying customer within 14 days. Post this plan somewhere visible.',
   ),
 
   // DAY 27 — Scale Mindset
