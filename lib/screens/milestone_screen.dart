@@ -16,6 +16,7 @@ import '../widgets/teaser_card.dart';
 import 'lesson_intro_screen.dart';
 import 'video_screen.dart';
 import 'quiz_screen.dart';
+import 'lesson_screen.dart';
 
 /// The celebration at the end of a day — shareable card + tomorrow's preview.
 class MilestoneScreen extends StatefulWidget {
@@ -169,13 +170,41 @@ class _MilestoneScreenState extends State<MilestoneScreen> {
               ),
             ),
             const SizedBox(height: 12),
-            TeaserCard(
-              nextLesson: widget.nextLesson,
-              hook: widget.nextLesson!.teaserHook ??
-                  'Another chapter of the codex awaits.',
-              quote: widget.nextLesson!.teaserQuote ??
-                  '"The next page turns on its own."',
-              alreadyUnlocked: state.isDayUnlocked(widget.nextLesson!.day),
+            GestureDetector(
+              onTap: state.isDayUnlocked(widget.nextLesson!.day) ? () {
+                Navigator.of(context).pushReplacement(
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation, secondaryAnimation) =>
+                        LessonIntroScreen(
+                      lesson: widget.nextLesson!,
+                      onComplete: () {
+                        Navigator.of(context).pushReplacement(
+                          PageRouteBuilder(
+                            pageBuilder: (context, animation, secondaryAnimation) =>
+                                LessonScreen(day: widget.nextLesson!.day),
+                            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                              return FadeTransition(opacity: animation, child: child);
+                            },
+                            transitionDuration: const Duration(milliseconds: 1400),
+                          ),
+                        );
+                      },
+                    ),
+                    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                      return FadeTransition(opacity: animation, child: child);
+                    },
+                    transitionDuration: const Duration(milliseconds: 1400),
+                  ),
+                );
+              } : null,
+              child: TeaserCard(
+                nextLesson: widget.nextLesson,
+                hook: widget.nextLesson!.teaserHook ??
+                    'Another chapter of the codex awaits.',
+                quote: widget.nextLesson!.teaserQuote ??
+                    '"The next page turns on its own."',
+                alreadyUnlocked: state.isDayUnlocked(widget.nextLesson!.day),
+              ),
             ),
             const SizedBox(height: 16),
             const InkDivider(),
