@@ -6,6 +6,7 @@ import '../services/app_state.dart';
 import '../services/codex_audio.dart';
 import '../services/storage_service.dart';
 import '../theme.dart';
+import 'about_developer_screen.dart';
 import 'codex_screen.dart';
 import 'weekly_intro_screen.dart';
 
@@ -53,6 +54,18 @@ class SettingsScreen extends StatelessWidget {
           ],
           const SizedBox(height: 28),
           Text(
+            'CREDITS',
+            style: GoogleFonts.cinzel(
+              fontSize: 11,
+              letterSpacing: 4,
+              color: CodexPalette.gold,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          const SizedBox(height: 12),
+          _AboutRow(),
+          const SizedBox(height: 28),
+          Text(
             'DANGER',
             style: GoogleFonts.cinzel(
               fontSize: 11,
@@ -64,6 +77,78 @@ class SettingsScreen extends StatelessWidget {
           const SizedBox(height: 12),
           _ResetRow(),
         ],
+      ),
+    );
+  }
+}
+
+class _AboutRow extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: CodexPalette.inkRaised,
+      borderRadius: BorderRadius.circular(2),
+      child: InkWell(
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (_) => const AboutDeveloperScreen(),
+          ));
+        },
+        borderRadius: BorderRadius.circular(2),
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+                color: CodexPalette.goldDeep.withValues(alpha: 0.5),
+                width: 0.5),
+            borderRadius: BorderRadius.circular(2),
+          ),
+          padding: const EdgeInsets.all(16),
+          child: Row(
+            children: [
+              Container(
+                width: 44,
+                height: 44,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: CodexPalette.inkHigher,
+                  border:
+                      Border.all(color: CodexPalette.goldDeep, width: 0.5),
+                  borderRadius: BorderRadius.circular(2),
+                ),
+                child: const Icon(Icons.person_outline_rounded,
+                    color: CodexPalette.gold, size: 22),
+              ),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'ABOUT THE DEVELOPER',
+                      style: GoogleFonts.cinzel(
+                        fontSize: 11,
+                        letterSpacing: 3,
+                        color: CodexPalette.gold,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      '${AboutDeveloperScreen.developerName} · the hand behind the codex',
+                      style: GoogleFonts.cormorantGaramond(
+                        fontSize: 14,
+                        color: CodexPalette.textOnInkDim,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const Icon(Icons.chevron_right_rounded,
+                  color: CodexPalette.gold),
+            ],
+          ),
+        ),
       ),
     );
   }

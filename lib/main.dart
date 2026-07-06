@@ -5,8 +5,10 @@ import 'package:provider/provider.dart';
 import 'services/app_state.dart';
 import 'services/codex_audio.dart';
 import 'services/storage_service.dart';
+import 'services/update_service.dart';
 import 'theme.dart';
 import 'widgets/animated_seal.dart';
+import 'widgets/update_prompt_sheet.dart';
 import 'screens/codex_screen.dart';
 import 'screens/onboarding_screen.dart';
 import 'screens/weekly_intro_screen.dart';
@@ -100,6 +102,10 @@ class _SplashGateState extends State<_SplashGate> {
   void _go(_SplashDecision decision) {
     if (_entered || !mounted) return;
     _entered = true;
+    // Kick off the GitHub Releases check in the background. We
+    // deliberately do not await it — the app should never block
+    // launch because the release API happened to be slow.
+    _maybePromptForUpdate();
     switch (decision.kind) {
       case _RouteKind.onboarding:
         Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -121,6 +127,27 @@ class _SplashGateState extends State<_SplashGate> {
         ));
         break;
     }
+  }
+
+  /// Check the latest GitHub Release in the background. If a newer
+  /// version exists, show a non-blocking sheet that opens the
+  /// release page when the user taps "Update". Failures are silent
+  /// — the user should never see an error if the API is down.
+  void _maybePromptForUpdate() {
+    Future<void>.delayed(const Duration(milliseconds: 1200), () async {
+      if (!mounted) return;
+      final check = await UpdateService.checkForUpdate();
+      if (!mounted || !check.hasUpdate) return;
+      if (check.newTag == null || check.releaseUrl == null) return;
+      // Give the routed screen a frame to lay out, then show the sheet.
+      await Future<void>.delayed(const Duration(milliseconds: 400));
+      if (!mounted) return;
+      await UpdatePromptSheet.show(
+        context,
+        newTag: check.newTag!,
+        releaseUrl: check.releaseUrl!,
+      );
+    });
   }
 
   @override

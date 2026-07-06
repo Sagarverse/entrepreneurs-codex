@@ -1,0 +1,35 @@
+# The Entrepreneur's Codex — Play Store / App Store copy
+
+## Short description (≤80 chars, Play Store)
+A 30-day journey of mindset, skill, and action — forged in ink and gold.
+
+## Long description (≤4000 chars, Play Store)
+The Entrepreneur's Codex is a cinematic 30-day training for the
+entrepreneurial mind. Each day opens a new chapter — part essay,
+part trial, part reflection — composed in a hand-set serif
+typeface over a deep ink-and-gold field. There are no streaks to
+chase. There is only the next page.
+
+WHAT YOU GET
+• 30 chapters across 4 weeks — abundance, craft, action, and
+  monetization
+• A daily manifesto, three trials, a curated video, a reflection
+  prompt, and a five-question examination
+• A living seal that fills as you progress
+• A printable PDF Certificate of Completion when you seal the
+  final chapter
+• A journal of your reflections, kept private on your device
+
+DESIGNED TO BE RETURNED TO
+Every chapter ends with a teaser for the next, so tomorrow's page
+already exists in your mind by the time you close the app. Sound
+is minimal — a single Arabic bell — so the experience is felt, not
+performed.
+
+PRIVATE BY DEFAULT
+Your reflections, your XP, your progress: all stored on your
+device. No accounts. No servers. No tracking. The auto-update
+check contacts GitHub's public Releases API once at launch so you
+always have the latest chapter; nothing about you leaves the app.
+
+Made by Sagar M · sagarm.2k5@gmail.com
