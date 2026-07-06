@@ -18,7 +18,7 @@ class UpdateService {
   /// The version of *this* build. Must match the version in
   /// `pubspec.yaml`. The auto-update check ignores the build number
   /// suffix (+1) and compares the X.Y.Z semver triple.
-  static const String currentVersion = '1.0.0';
+  static const String currentVersion = '1.1.0';
 
   /// Play Store listing — only used on Android. The release-page
   /// fallback works for every platform.
